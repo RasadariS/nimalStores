@@ -1,30 +1,28 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'org.springframework.boot' version '2.2.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 }
 
-group = 'lk.nimalStores'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 configurations {
 	developmentOnly
 	runtimeClasspath {
 		extendsFrom developmentOnly
 	}
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
 }
 
 repositories {
-	jcenter()
-	maven {
-		url "https://maven.springframework.org/release"
-	}
-	maven {
-		url "https://maven.restlet.com"
+	mavenCentral()
+}
+
+springBoot {
+	buildInfo {
+		properties {
+			group = 'lk.w3Academy'
+			version = '0.0.1-SNAPSHOT'
+			sourceCompatibility = '11'
+		}
 	}
 }
 
@@ -36,6 +34,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 //twilio - to send SMS
 	implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
 //=========================Springboot cache=========//
@@ -75,18 +74,20 @@ dependencies {
 // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
 	compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.5'
 
-
-
 	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'mysql:mysql-connector-java'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 test {
 	useJUnitPlatform()
+}
+
+/*To boot run*/
+bootRun {
+	sourceResources sourceSets.main
 }
