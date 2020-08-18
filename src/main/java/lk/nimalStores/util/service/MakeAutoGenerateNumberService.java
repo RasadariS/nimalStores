@@ -34,4 +34,8 @@ public class MakeAutoGenerateNumberService {
         }
         return newNumber;
     }
+
+    public String phoneNumberLengthValidator(String contactOne) {
+        return null;
+    }
 }

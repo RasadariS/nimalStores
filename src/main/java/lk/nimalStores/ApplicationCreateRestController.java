@@ -46,16 +46,16 @@ public class ApplicationCreateRestController {
 
 //Employee
         Employee employee = new Employee();
-        employee.setPayRoleNumber("11111111");
+        //employee.setPayRoleNumber("11111111");
         employee.setName("Admin User");
         employee.setCallingName("Admin");
         employee.setName("908670000V");
         employee.setMobileOne("0750000000");
-        employee.setTitle(Title.DR);
+        employee.setTitle(Title.MR);
         employee.setGender(Gender.MALE);
-        employee.setBloodGroup(BloodGroup.AP);
-        employee.setDesignation(Designation.ED);
-        employee.setCivilStatus(CivilStatus.UNMARRIED);
+        //employee.setBloodGroup(BloodGroup.AP);
+        employee.setDesignation(Designation.OWNER);
+        employee.setCivilStatus(CivilStatus.SINGLE);
         employee.setEmployeeStatus(EmployeeStatus.WORKING);
         employee.setDateOfBirth(LocalDate.now().minusYears(18));
         employee.setDateOfAssignment(LocalDate.now());
