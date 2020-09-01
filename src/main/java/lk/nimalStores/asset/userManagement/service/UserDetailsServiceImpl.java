@@ -1,8 +1,5 @@
 package lk.nimalStores.asset.userManagement.service;
 
-import lk.nimalStores.asset.userManagement.CustomerUserDetails;
-import lk.nimalStores.asset.userManagement.dao.UserDao;
-import lk.nimalStores.asset.userManagement.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         User user = userDao.findByUsername(username.toLowerCase());
-        CustomerUserDetails userDetails;
+       CustomerUserDetails userDetails;
         if ( user != null ) {
             userDetails = new CustomerUserDetails();
             userDetails.setUser(user);

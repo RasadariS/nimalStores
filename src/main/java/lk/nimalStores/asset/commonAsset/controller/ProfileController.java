@@ -1,9 +1,9 @@
 package lk.nimalStores.asset.commonAsset.controller;
 
-import lk.nimalStores.asset.userManagement.entity.PasswordChange;
-import lk.nimalStores.asset.userManagement.entity.User;
-import lk.nimalStores.asset.userManagement.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+
+
+
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,11 +22,11 @@ public class ProfileController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
     public ProfileController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
+
 
     @GetMapping( value = "/profile" )
     public String userProfile(Model model, Principal principal) {

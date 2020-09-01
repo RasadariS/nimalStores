@@ -1,7 +1,7 @@
 package lk.nimalStores.util.service;
 
-import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
 
 @Service
 public class MakeAutoGenerateNumberService {
@@ -34,4 +34,13 @@ public class MakeAutoGenerateNumberService {
         }
         return newNumber;
     }
+
+    // phone number length validator
+    public String phoneNumberLengthValidator(String number) {
+        if ( number.length() == 9 ) {
+            number = "0".concat(number);
+        }
+        return number;
+    }
+
 }

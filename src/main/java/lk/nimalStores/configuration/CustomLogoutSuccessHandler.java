@@ -1,11 +1,5 @@
 package lk.nimalStores.configuration;
 
-
-import lk.nimalStores.asset.userManagement.entity.Enum.UserSessionLogStatus;
-import lk.nimalStores.asset.userManagement.entity.User;
-import lk.nimalStores.asset.userManagement.entity.UserSessionLog;
-import lk.nimalStores.asset.userManagement.service.UserService;
-import lk.nimalStores.asset.userManagement.service.UserSessionLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;

@@ -1,7 +1,5 @@
 package lk.nimalStores.asset.userManagement.controller;
 
-import lk.nimalStores.asset.userManagement.entity.Role;
-import lk.nimalStores.asset.userManagement.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

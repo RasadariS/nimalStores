@@ -1,5 +1,7 @@
 package lk.nimalStores.asset.employee.entity.Enum;
 
+
+
 public enum EmployeeStatus {
     WORKING("Working"),
     LEAVE("Leave"),

@@ -1,6 +1,6 @@
 package lk.nimalStores.asset.employee.entity;
 
-import lk.nimalStores.util.audit.AuditEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

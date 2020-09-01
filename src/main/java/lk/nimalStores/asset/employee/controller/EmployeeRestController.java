@@ -1,19 +1,17 @@
 package lk.nimalStores.asset.employee.controller;
 
+
+
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import lk.nimalStores.asset.employee.entity.Employee;
-import lk.nimalStores.asset.employee.entity.Enum.Designation;
-import lk.nimalStores.asset.employee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping( "/employee" )
