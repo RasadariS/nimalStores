@@ -1,14 +1,22 @@
 package lk.nimalStores.asset.commonAsset.service;
 
 
-
+import lk.nimalStores.asset.employee.controller.EmployeeRestController;
+import lk.nimalStores.asset.item.entity.Item;
+import lk.nimalStores.asset.item.service.ItemService;
+import lk.nimalStores.asset.supplier.entity.Supplier;
+import lk.nimalStores.asset.supplier.service.SupplierService;
+import lk.nimalStores.asset.supplierItem.entity.Enum.ItemSupplierStatus;
+import lk.nimalStores.asset.supplierItem.entity.SupplierItem;
+import lk.nimalStores.asset.supplierItem.service.SupplierItemService;
+import lk.nimalStores.util.service.MakeAutoGenerateNumberService;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.*;
 
 @Service
 public class CommonService {
@@ -25,7 +33,7 @@ public class CommonService {
     }
 
     public List< Supplier > commonSupplierSearch(Supplier supplier) {
-        List<Supplier> suppliers;
+        List< Supplier > suppliers;
         if (supplier.getContactOne() != null) {
             String contactNumber = makeAutoGenerateNumberService.phoneNumberLengthValidator(supplier.getContactOne());
 //all match with supplier contact number one

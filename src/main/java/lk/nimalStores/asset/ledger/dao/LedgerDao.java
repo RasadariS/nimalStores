@@ -1,5 +1,7 @@
 package lk.nimalStores.asset.ledger.dao;
 
+import lk.nimalStores.asset.item.entity.Item;
+import lk.nimalStores.asset.ledger.entity.Ledger;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

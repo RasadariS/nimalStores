@@ -1,9 +1,9 @@
 package lk.nimalStores.asset.commonAsset.controller;
 
 
-
-
-
+import lk.nimalStores.asset.userManagement.entity.PasswordChange;
+import lk.nimalStores.asset.userManagement.entity.User;
+import lk.nimalStores.asset.userManagement.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

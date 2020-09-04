@@ -1,10 +1,10 @@
 package lk.nimalStores.asset.userManagement.entity;
 
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
-
+import lk.nimalStores.asset.employee.entity.Employee;
+import lk.nimalStores.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.*;
+import java.util.List;
 
 @Entity
 @Getter

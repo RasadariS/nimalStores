@@ -1,5 +1,9 @@
 package lk.nimalStores.asset.supplierItem.dao;
 
+import lk.nimalStores.asset.item.entity.Item;
+import lk.nimalStores.asset.supplier.entity.Supplier;
+import lk.nimalStores.asset.supplierItem.entity.Enum.ItemSupplierStatus;
+import lk.nimalStores.asset.supplierItem.entity.SupplierItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

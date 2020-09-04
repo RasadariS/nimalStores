@@ -1,13 +1,16 @@
 package lk.nimalStores.asset.customer.service;
 
 
-
+import lk.nimalStores.asset.customer.dao.CustomerDao;
+import lk.nimalStores.asset.customer.entity.Customer;
+import lk.nimalStores.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
-import java.util.*;
+
+import java.util.List;
 
 @Service
 @CacheConfig( cacheNames = "customer" )

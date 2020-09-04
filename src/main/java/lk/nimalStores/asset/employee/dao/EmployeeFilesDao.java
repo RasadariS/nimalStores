@@ -1,5 +1,7 @@
 package lk.nimalStores.asset.employee.dao;
 
+import lk.nimalStores.asset.employee.entity.Employee;
+import lk.nimalStores.asset.employee.entity.EmployeeFiles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,8 @@
 package lk.nimalStores.asset.branch.entity;
 
 
-
+import lk.nimalStores.asset.employee.entity.Employee;
+import lk.nimalStores.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
-import java.util.*;
+import java.util.List;
 
 @Entity
 @Getter

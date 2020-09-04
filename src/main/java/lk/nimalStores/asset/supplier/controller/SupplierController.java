@@ -1,6 +1,10 @@
 package lk.nimalStores.asset.supplier.controller;
 
 
+import lk.nimalStores.asset.supplier.entity.Supplier;
+import lk.nimalStores.asset.supplier.service.SupplierService;
+import lk.nimalStores.util.interfaces.AbstractController;
+import lk.nimalStores.util.service.MakeAutoGenerateNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

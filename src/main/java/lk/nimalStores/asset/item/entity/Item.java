@@ -2,14 +2,13 @@ package lk.nimalStores.asset.item.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingherSuper.asset.PurchaseOrder.entity.PurchaseOrderItem;
-import lk.samarasingherSuper.asset.category.entity.Category;
-import lk.samarasingherSuper.asset.item.entity.Enum.ItemStatus;
-import lk.samarasingherSuper.asset.ledger.entity.Ledger;
-import lk.samarasingherSuper.asset.supplierItem.entity.SupplierItem;
-import lk.samarasingherSuper.util.audit.AuditEntity;
+import lk.nimalStores.asset.PurchaseOrder.entity.PurchaseOrderItem;
+import lk.nimalStores.asset.category.entity.Category;
+import lk.nimalStores.asset.item.entity.Enum.ItemStatus;
+import lk.nimalStores.asset.ledger.entity.Ledger;
+import lk.nimalStores.asset.supplierItem.entity.SupplierItem;
+import lk.nimalStores.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

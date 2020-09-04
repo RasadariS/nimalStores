@@ -1,8 +1,11 @@
 package lk.nimalStores.asset.goodReceivedNote.entity;
 
 
-
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.nimalStores.asset.PurchaseOrder.entity.PurchaseOrder;
+import lk.nimalStores.asset.goodReceivedNote.entity.Enum.GoodReceivedNoteState;
+import lk.nimalStores.asset.ledger.entity.Ledger;
+import lk.nimalStores.util.audit.AuditEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,7 +18,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonFilter( "GoodReceivedNote" )
-@ToString
 public class GoodReceivedNote extends AuditEntity {
 
     private String remarks;

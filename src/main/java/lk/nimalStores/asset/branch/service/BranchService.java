@@ -1,5 +1,8 @@
 package lk.nimalStores.asset.branch.service;
 
+import lk.nimalStores.asset.branch.dao.BranchDao;
+import lk.nimalStores.asset.branch.entity.Branch;
+import lk.nimalStores.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.domain.Example;
@@ -18,7 +21,7 @@ public class BranchService implements AbstractService< Branch, Integer> {
         this.branchDao = branchDao;
     }
 
-    public List<Branch> findAll() {
+    public List< Branch > findAll() {
         return branchDao.findAll();
     }
 

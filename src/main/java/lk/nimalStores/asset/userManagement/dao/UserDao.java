@@ -1,5 +1,7 @@
 package lk.nimalStores.asset.userManagement.dao;
 
+import lk.nimalStores.asset.employee.entity.Employee;
+import lk.nimalStores.asset.userManagement.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

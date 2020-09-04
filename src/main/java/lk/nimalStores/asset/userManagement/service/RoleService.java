@@ -1,5 +1,8 @@
 package lk.nimalStores.asset.userManagement.service;
 
+import lk.nimalStores.asset.userManagement.dao.RoleDao;
+import lk.nimalStores.asset.userManagement.entity.Role;
+import lk.nimalStores.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
 import org.springframework.data.domain.Example;

@@ -1,9 +1,9 @@
 package lk.nimalStores.asset.category.entity;
 
 
-
-
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.nimalStores.asset.item.entity.Enum.MainCategory;
+import lk.nimalStores.asset.item.entity.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.*;
+import java.util.List;
 
 @Entity
 @Getter

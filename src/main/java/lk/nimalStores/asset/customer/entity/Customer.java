@@ -1,8 +1,9 @@
 package lk.nimalStores.asset.customer.entity;
 
 
-
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.nimalStores.asset.commonAsset.model.Enum.Title;
+import lk.nimalStores.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

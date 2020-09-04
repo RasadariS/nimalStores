@@ -1,4 +1,8 @@
 package lk.nimalStores.asset.discountRatio.controller;
+
+import lk.nimalStores.asset.discountRatio.entity.DiscountRatio;
+import lk.nimalStores.asset.discountRatio.entity.Enum.DiscountRatioStatus;
+import lk.nimalStores.asset.discountRatio.service.DiscountRatioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

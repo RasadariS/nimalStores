@@ -1,5 +1,6 @@
 package lk.nimalStores.asset.userManagement.dao;
 
+import lk.nimalStores.asset.userManagement.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

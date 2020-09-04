@@ -1,4 +1,6 @@
 package lk.nimalStores.asset.userManagement.entity;
+
+import lk.nimalStores.asset.userManagement.entity.Enum.UserSessionLogStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

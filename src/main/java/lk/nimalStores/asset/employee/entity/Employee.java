@@ -2,6 +2,15 @@ package lk.nimalStores.asset.employee.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.nimalStores.asset.branch.entity.Branch;
+import lk.nimalStores.asset.commonAsset.model.Enum.BloodGroup;
+import lk.nimalStores.asset.commonAsset.model.Enum.CivilStatus;
+import lk.nimalStores.asset.commonAsset.model.Enum.Gender;
+import lk.nimalStores.asset.commonAsset.model.Enum.Title;
+import lk.nimalStores.asset.commonAsset.model.FileInfo;
+import lk.nimalStores.asset.employee.entity.Enum.Designation;
+import lk.nimalStores.asset.employee.entity.Enum.EmployeeStatus;
+import lk.nimalStores.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

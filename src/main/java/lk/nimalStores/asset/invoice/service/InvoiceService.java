@@ -1,5 +1,8 @@
 package lk.nimalStores.asset.invoice.service;
 
+import lk.nimalStores.asset.invoice.dao.InvoiceDao;
+import lk.nimalStores.asset.invoice.entity.Invoice;
+import lk.nimalStores.util.interfaces.AbstractService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;

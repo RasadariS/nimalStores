@@ -1,9 +1,14 @@
 package lk.nimalStores.asset.invoice.entity;
 
 
-
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lk.nimalStores.asset.customer.entity.Customer;
+import lk.nimalStores.asset.discountRatio.entity.DiscountRatio;
+import lk.nimalStores.asset.invoice.entity.Enum.InvoicePrintOrNot;
+import lk.nimalStores.asset.invoice.entity.Enum.InvoiceValidOrNot;
+import lk.nimalStores.asset.invoice.entity.Enum.PaymentMethod;
+import lk.nimalStores.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +16,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.List;
 
 @Entity
 @Getter
