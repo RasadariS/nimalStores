@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head data-th-replace="~{fragments/header :: headerFragment}">
+<head th:replace="~{fragments/header :: headerFragment}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>purchaseOrder</title>
+    <title>J N Super </title>
 </head>
+
+
+
 <body>
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--heading Area-->
-<div class="container-fluid bg-dark form-Border">
+<div class="container-fluid ">
     <div class="row text-center formManagement border-info">
         <!-- New PR Button-->
         <div class="col">
@@ -32,7 +36,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid  text-center">
+<div class="container-fluid bg-info formBorder text-center">
     <!--Table view-->
     <div class="col">
         <div class="col" id="purchaseRequestListPresent"
@@ -93,10 +97,9 @@
     </div>
 </div>
 
-<!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+<div  data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
 </body>
 </html>

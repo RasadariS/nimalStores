@@ -66,22 +66,22 @@
                         <th data-th-text="${supplier.address}"></th>
                         <th data-th-if="${supplierDetailShow !=true}">
                             <a class="btn btn-primary btn-sm" data-th-href="${'/supplierItem/edit/' + supplier.id}"><i
-                                    class="fa fa-folder-open" style="font-size: 15px"></i>Edit Item </a>
+                                  class="fa fa-folder-open" style="font-size: 15px"></i>Edit Item </a>
                             <a class="btn btn-primary btn-sm" data-th-href="${'/supplierItem/supplier/' + supplier.id}"><i
-                                    class="fa fa-folder-open" style="font-size: 15px"></i>Add Item </a>
+                                  class="fa fa-folder-open" style="font-size: 15px"></i>Add Item </a>
                             <a class="btn btn-primary btn-sm" data-th-href="${'/purchaseOrder/supplier/' + supplier.id}"><i
-                                    class="fa fa-folder-open" style="font-size: 15px"></i>Purchase Order</a>
+                                  class="fa fa-folder-open" style="font-size: 15px"></i>Purchase Order</a>
                             <a class="btn btn-primary btn-sm" data-th-href="${'/supplier/' + supplier.id}"><i
-                                    class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>
+                                  class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>
                             <a class="btn btn-success btn-sm" data-th-href="${'/supplier/edit/' + supplier.id}"><i
-                                    class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
+                                  class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
                             <a class="btn btn-danger btn-sm" data-th-href="${'/supplier/delete/' + supplier.id}">
                                 <!--data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"--> <i
-                                    class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
+                                  class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
                         </th>
                         <th data-th-if="${supplierDetailShow==true}">
                             <a class="btn btn-primary btn-sm" data-th-href="${supplierDetailShow==true ?'/purchaseOrder/supplier/' + supplier.id :'/supplierItem/supplier/' + supplier.id}"><i
-                                    class="fa fa-thumbs-up" style="font-size: 15px"></i>&nbsp;Select</a>
+                                  class="fa fa-thumbs-up" style="font-size: 15px"></i>&nbsp;Select</a>
                         </th>
                     </tr>
                     </tbody>
@@ -97,24 +97,23 @@
                     </button>
                     <h3 class="text-center text-danger">
                         <strong>There is no supplier upto now please add supplier to the system using add user
-                            button.</strong>
+                                button.</strong>
                     </h3>
                 </div>
             </div>
-            <script>
-                /*active boostrap alert - start*/
-                $(".alert").alert();
-                /*active boostrap alert - end*/
-            </script>
         </div>
-        <!--TODO-->
         <!--Save supplier show-->
     </div>
 </div>
 <!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+<div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
+<script>
+    /*active boostrap alert - start*/
+    $(".alert").alert();
+    /*active boostrap alert - end*/
+</script>
 </body>
 </html>
