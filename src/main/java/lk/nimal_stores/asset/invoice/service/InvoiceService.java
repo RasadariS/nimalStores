@@ -14,50 +14,56 @@ import java.util.stream.Collectors;
 
 @Service
 public class InvoiceService implements AbstractService< Invoice, Integer > {
-    private final InvoiceDao invoiceDao;
+  private final InvoiceDao invoiceDao;
 
-    public InvoiceService(InvoiceDao invoiceDao) {
-        this.invoiceDao = invoiceDao;
+  public InvoiceService(InvoiceDao invoiceDao) {
+    this.invoiceDao = invoiceDao;
+  }
+
+
+  public List< Invoice > findAll() {
+    return invoiceDao.findAll().stream()
+        .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+        .collect(Collectors.toList());
+  }
+
+  public Invoice findById(Integer id) {
+    return invoiceDao.getOne(id);
+  }
+
+  public Invoice persist(Invoice invoice) {
+    if ( invoice.getId() == null ) {
+      invoice.setLiveDead(LiveDead.ACTIVE);
     }
+    return invoiceDao.save(invoice);
+  }
 
+  public boolean delete(Integer id) {
+    Invoice invoice = invoiceDao.getOne(id);
+    invoice.setLiveDead(LiveDead.STOP);
+    invoiceDao.save(invoice);
+    return false;
+  }
 
-    public List< Invoice > findAll() {
-        return invoiceDao.findAll().stream()
-            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
-            .collect(Collectors.toList());
-    }
+  public List< Invoice > search(Invoice invoice) {
+    ExampleMatcher matcher = ExampleMatcher
+        .matching()
+        .withIgnoreCase()
+        .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+    Example< Invoice > invoiceExample = Example.of(invoice, matcher);
+    return invoiceDao.findAll(invoiceExample);
 
-    public Invoice findById(Integer id) {
-        return invoiceDao.getOne(id);
-    }
+  }
 
-    public Invoice persist(Invoice invoice) {
-        if(invoice.getId()==null){
-            invoice.setLiveDead(LiveDead.ACTIVE);}
-        return invoiceDao.save(invoice);
-    }
+  public List< Invoice > findByCreatedAtIsBetween(LocalDateTime from, LocalDateTime to) {
+    return invoiceDao.findByCreatedAtIsBetween(from, to);
+  }
 
-    public boolean delete(Integer id) {
-        Invoice invoice =  invoiceDao.getOne(id);
-        invoice.setLiveDead(LiveDead.STOP);
-        invoiceDao.save(invoice);
-        return false;
-    }
-    public List< Invoice > search(Invoice invoice) {
-        ExampleMatcher matcher = ExampleMatcher
-                .matching()
-                .withIgnoreCase()
-                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
-        Example< Invoice > invoiceExample = Example.of(invoice, matcher);
-        return invoiceDao.findAll(invoiceExample);
+  public Invoice findByLastInvoice() {
+    return invoiceDao.findFirstByOrderByIdDesc();
+  }
 
-    }
-
-    public List< Invoice > findByCreatedAtIsBetween(LocalDateTime from, LocalDateTime to) {
-        return invoiceDao.findByCreatedAtIsBetween(from, to);
-    }
-
-    public Invoice findByLastInvoice() {
-        return invoiceDao.findFirstByOrderByIdDesc();
-    }
+  public List< Invoice > findByCreatedAtIsBetweenAndCreatedBy(LocalDateTime from, LocalDateTime to, String userName) {
+   return invoiceDao.findByCreatedAtIsBetweenAndCreatedBy(from, to, userName);
+  }
 }

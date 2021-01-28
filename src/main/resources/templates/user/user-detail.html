@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
+<html lang="en" >
+<head  data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
 </head>
 <body>
-<nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
+<nav  data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--Page header -->
-<div class="container-fluid bg-secondary form-Border">
+<div class="container-fluid">
     <div class="row text-center formManagement border-info">
         <div class="col">
-            <a class="btn btn-primary" href="/home">
+            <a class="btn btn-success" href="/home">
                 <i class="fa fa-home" style="font-size: 20px"></i> &nbsp; Home
             </a>
         </div>
@@ -19,12 +19,12 @@
             <h4 class="text-light text-center">
                 <strong>
                     <span id="formHeader"
-                          th:text="${userDetail.employee.title.title}+${' '}+${userDetail.employee.name}"></span>
+                           data-th-text="${userDetail.employee.title.title}+${' '}+${userDetail.employee.name}"></span>
                 </strong>
             </h4>
         </div>
         <div class="col">
-            <a href="/user" class="btn btn-primary">
+            <a href="/user" class="btn btn-success">
                 <i class="fa fa-list"></i>&nbsp; View List
             </a>
         </div>
@@ -40,7 +40,7 @@
                     <label class="control-label">ID :</label>
                 </div>
                 <div class="col-md-8">
-                    <strong><span id="id" th:text="${userDetail.id}"></span></strong>
+                    <strong><span id="id"  data-th-text="${userDetail.id}"></span></strong>
                 </div>
             </div>
             <!--User Name-->
@@ -49,7 +49,7 @@
                     <label class="control-label">User Name :</label>
                 </div>
                 <div class="col-md-8">
-                    <strong><span id="userName" th:text="${userDetail.username}"></span></strong>
+                    <strong><span id="userName"  data-th-text="${userDetail.username}"></span></strong>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-md-8">
                     <strong><span id="employeeName"
-                                  th:text="${userDetail.employee.name}+ ${' - '}+${userDetail.employee.nic}"></span></strong>
+                                   data-th-text="${userDetail.employee.name}+ ${' - '}+${userDetail.employee.nic}"></span></strong>
                 </div>
             </div>
             <!--Created date-->
@@ -71,7 +71,7 @@
                     <label class="control-label">Created Date :</label>
                 </div>
                 <div class="col-md-8">
-                    <strong><span id="createDate" th:text="${{userDetail.createdAt}}"></span></strong>
+                    <strong><span id="createDate"  data-th-text="${{userDetail.createdAt}}"></span></strong>
                 </div>
             </div>
             <div class="form-row">
@@ -87,9 +87,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="roles, count : ${userDetail.roles}">
-                            <th th:text="${count.count}"></th>
-                            <th th:text="${roles.roleName}"></th>
+                        <tr  data-th-each="roles, count : ${userDetail.roles}">
+                            <th  data-th-text="${count.count}"></th>
+                            <th  data-th-text="${roles.roleName}"></th>
                         </tr>
                         </tbody>
                     </table>
@@ -99,8 +99,8 @@
     </div>
 </div>
 
-<div  th:replace="~{fragments/footer :: footerFragment}"></div>
+<div   data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<div th:replace="~{fragments/script :: scriptFragment}"></div>
+<div  data-th-replace="~{fragments/script :: scriptFragment}"></div>
 </body>
 </html>

@@ -181,7 +181,7 @@
   </div >
 </div >
 <!--Payment History -->
-<div class="form-group col-md-12 col-sm-12 text-center flex-column" data-th-if="${ #lists.isEmpty(purchaseOrderDetail.payments)}">
+<div class="form-group col-md-12 col-sm-12 text-center flex-column"  data-th-if="${ #lists.isEmpty(purchaseOrderDetail.payments)}">
   <div class="form-row" >
     <label class="control-label text-capitalize font-weight-bold" >Payment History :</label >
   </div >
@@ -212,7 +212,7 @@
 </div >
 
 <div class="container-fluid" >
-  <div class="offset-2 col-8 col-sm-8 col-md-8" data-th-if="${ #lists.isEmpty(purchaseOrderDetail.payments)}" >
+  <div class="offset-2 col-8 col-sm-8 col-md-8"  data-th-if="${ #lists.isEmpty(purchaseOrderDetail.payments)}" >
     <div class="alert alert-warning alert-dismissible fade show" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
         <span aria-hidden="true" >&times;</span >

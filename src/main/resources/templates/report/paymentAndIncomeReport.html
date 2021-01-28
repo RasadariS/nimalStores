@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<head th:replace="~{fragments/header :: headerFragment}" >
+<html lang="en"  >
+<head  data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
   <title >Thymeleaf Springboot </title >
 </head >
 <body >
-<nav th:replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<nav  data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <div class="container-fluid bg-secondary form-Border" >
   <div class="row text-center formManagement border-info" >
@@ -157,13 +157,15 @@
           <th > Index</th >
           <th > User Name</th >
           <th >Payment Count</th >
+          <th >Total</th >
         </tr >
         </thead >
         <tbody >
-        <tr data-th-each="invoiceCashier, rowCount : ${invoiceByCashierAndTotalAmount}" >
+        <tr data-th-each="paymentByUser, rowCount : ${paymentByUserAndTotalAmount}" >
           <th data-th-text="${rowCount.count}" ></th >
-          <th data-th-text="${invoiceCashier.name}" ></th >
-          <th data-th-text="${invoiceCashier.count}" ></th >
+          <th data-th-text="${paymentByUser.name}" ></th >
+          <th data-th-text="${paymentByUser.count}" ></th >
+          <th data-th-text="${paymentByUser.total}" ></th >
         </tr >
         </tbody >
       </table >
@@ -198,9 +200,9 @@
 </div >
 
 
-<div th:replace="~{fragments/footer :: footerFragment}" ></div >
+<div  data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
-<div th:replace="~{fragments/script :: scriptFragment}" ></div >
+<div  data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 
 </body >
 </html >

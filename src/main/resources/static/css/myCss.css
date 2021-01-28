@@ -9,7 +9,7 @@
 
 /* Main window- start*/
 body {
-    /*background-image: url(../img/back1.jpg);*/
+    background-image: url(../img/back-01.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -23,23 +23,150 @@ body {
     padding: 20px;
     background: rgba(53, 6, 207, 0.4);
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.8);
+    box-shadow: 0 5px 25px rgba(0,0,0,.8);
     border-radius:10px;
 
 }
 .card{
     color: white;
     border-radius: 10px;
+    width: 300px;
 }
 
 
 /* Main window- end*/
+/* LOGIN PAGE*/
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Comic Sans", "Courier New",
+    georgia, helvetica, impact, "times new roman", "trebuchet ms", verdana,
+    "Iskoola Pota";
+    --error-color: #fa370d;
 
-/*html Background - start login page styles*/
+}
+/* for login form - start*/
+#loginBack {
+    background-image: url('../img/12.jpg');
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+
+
+}
+
+#loginPage .logo1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(200%,-20%);
+    width: 200px;
+    height: 200px;
+    padding: 0;
+    border-radius: 10px;
+
+}
+#loginPage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 800px;
+    padding: 20px;
+    background: rgba(0,0,0,.2);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.8);
+    border-radius: 10px;
+
+
+}
+
+#loginPage h1{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+#loginPage  .form-label-group {
+    position: relative;
+}
+
+#loginPage  .form-label-group input {
+    width: 100%;
+    padding: 0 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+    background: transparent;
+}
+
+#loginPage .form-label-group label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+#loginPage .form-label-group input:focus ~ label,
+#loginPage .form-label-group input:valid ~ label{
+    top: -18px;
+    left: 0;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+#loginPage input [type="submit"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #f7b200;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+/* for login form - end*/
+#formBack {
+    background-image: url('../img/back-05.jpg');
+    margin: 0px;
+    padding: 0;
+    background-size: cover;
+}
+
+#formFont {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%,5%);
+    width: 1320px;
+    height: 600px;
+    padding: 20px;
+    background: rgba(0,0,0,.2);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.8);
+    border-radius: 10px;
+}
+
+#formBackFont {
+    background-image: url('../img/9.jpg');
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+}
 
 #loginback{
 
-    background-image: url(../img/1.jpg);
+    background-image: url(../img/12.jpg);
     -webkit-background-size:cover;
     background-size: cover;
     background-position:center center;
@@ -125,7 +252,7 @@ body {
 
 }
 
-input{
+.input{
 
     border: none;
     border-bottom: 1px solid #fff;
@@ -293,11 +420,12 @@ input{
 
 .dropdown-toggle {
     font-size: 18px;
+
 !important;
 }
 
 .dropdown-menu{
-   background-color: #4f4f4f;
+    background-color: #4f4f4f;
     background:rgba(0,0,0,0.4);
 }
 .dropdown-item{
@@ -321,11 +449,11 @@ nav {
     margin-right:50px;
 }
 
- .nav-link{
+.nav-link{
     font-size: medium;
 }
 
- .dropdown-toggle:after {content: none}
+.dropdown-toggle:after {content: none}
 
 .navbar li a{
     margin-top: 10px;
@@ -368,7 +496,7 @@ nav {
     box-shadow: 8px 8px 8px 8px white;
 
     border-radius: 50%;
-    background: linear-gradient(215deg, #5ca155, #a080c5, #56a4b6, #04c2ec, #f2e053);
+    background: linear-gradient(215deg, #996633, #cc9900, #ffcc00, #ffcc66, #ff9933);
     background-size: 1000% 1000%;
 
     -webkit-animation: AnimationName 10s ease infinite;
@@ -391,21 +519,7 @@ nav {
 }
 
 /*Error Message Colour - star*/
-/*main window notification div style- start*/
-.mainWindSumReport {
-    color: #f7f7f7;
-    align-content: center;
-    background: #49e6fd;
-    background: -webkit-radial-gradient(#6b67ff, #3b9ffd, #29A1D5);
-    background: -o-radial-gradient(#6b67ff, #3b9ffd, #29A1D5);
-    background: -moz-radial-gradient(#6b67ff, #3b9ffd, #29A1D5);
-    background: radial-gradient(#6b67ff, #3b9ffd, #29A1D5);
-    border: 1px solid #f7f7f7;
-    border-radius: 25px 10px 25px 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
 
-/*main window notification div style- end*/
 /*all button same size according to boostrap btn-sm  - start*/
 button .btn {
     padding: 5px 10px !important;
@@ -434,32 +548,33 @@ button .btn {
     border-radius: 100px;
 }
 #header span{
-    color: #00FFFF;
+    color:  #888844;
     font-size: large;
 }
 #form{
 
     position: relative;
-    top: -50px;
+    top: 50%;
     left: 65%;
     transform: translate(-65%,10%);
     padding: 20px;
-    background: rgba(53, 6, 207, 0.4);
+    background-image: url("../img/back-06.jpg");
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.8);
     border-radius:10px;
+    background-size: cover;
 
 
 }
 label {
-   font-size: 16px !important;
+    font-size: 16px !important;
     font-max-size: 22px;
     font-min-size: 12px;
     font-weight: normal;
     color: white;
     alignment: left;
     width:auto;
-   text-align: left;
+    text-align: left;
 
 }
 
@@ -492,7 +607,7 @@ div input {
 
 .formBorder {
     border-radius: 15px;
-    background: linear-gradient(215deg, #5ca155, #a080c5, #56a4b6, #04c2ec, #f2e053);
+    background: linear-gradient(215deg,#996633, #cc9900, #ffcc00, #ffcc66, #ff9933);
     background-size: 1000% 1000%;
 
     -webkit-animation: AnimationName 31s ease infinite;
@@ -646,8 +761,6 @@ hr:before {
 /** logo animation**/
 #logo {
 
-    margin: 50px;
-
     -webkit-animation:spin 2s linear infinite;
     -moz-animation:spin 2s linear infinite;
     animation:spin 2s linear infinite;
@@ -660,10 +773,10 @@ hr:before {
 }
 
 @-webkit-keyframes spin {
-     50%{
-         -webkit-transform:scaleX(0.1);
-     }
- }
+    50%{
+        -webkit-transform:scaleX(0.1);
+    }
+}
 
 
 @keyframes spin {
@@ -743,4 +856,70 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
     margin: 10px;
 
 
+}
+
+/*main window start */
+#windowBack {
+   background-image: url('../img/back-06.jpg');
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    /*background-color: #d9b38c;*/
+
+
+}
+
+/*main window end */
+
+/*Card start*/
+.card-color{
+    width: 23rem;
+    background-image:url('../img/back-03.jpg');
+    opacity: 0.91;
+    align-content: center;
+    position: relative;
+    margin-left: 56px;
+    margin-bottom: 20px;
+    margin-top: 32px;
+    padding-left: 25px;
+    text-decoration-color: #4d2600;
+
+}
+/*Card start*/
+/*main window notification div style- start*/
+.mainWindSumReport {
+    color: #33cc33;
+    align-content: center;
+    background: #49e6fd;
+    background: -webkit-radial-gradient( #cc9900, #ffcc00, #ffcc66, #ff9933);
+    background: -o-radial-gradient(#cc9900, #ffcc00, #ffcc66, #ff9933);
+    background: -moz-radial-gradient(#cc9900, #ffcc00, #ffcc66, #ff9933);
+    background: radial-gradient(#cc9900, #ffcc00, #ffcc66, #ff9933);
+    border: 1px solid #f7f7f7;
+    border-radius: 25px 10px 25px 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*main window notification div style- end*/
+.view-btn {
+    background-image: url("../img/back-04.jpg");
+}
+.fakeimg {
+    height: 200px;
+    background: #aaa;
+}
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+#carousal{
+
+    background-color:#ccff33;
+    opacity: 0.91;
+    align-content: center;
+    position: relative;
+    margin-left: 56px;
+    margin-bottom: 20px;
+    margin-top: 32px;
 }

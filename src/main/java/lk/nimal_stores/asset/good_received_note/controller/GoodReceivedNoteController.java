@@ -1,5 +1,6 @@
 package lk.nimal_stores.asset.good_received_note.controller;
 
+import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.good_received_note.entity.GoodReceivedNote;
 import lk.nimal_stores.asset.good_received_note.entity.enums.GoodReceivedNoteState;
 import lk.nimal_stores.asset.good_received_note.service.GoodReceivedNoteService;
@@ -64,14 +65,17 @@ public class GoodReceivedNoteController {
                 //before update need to check price and expire date
                 if ( ledgerDB.getExpiredDate() == ledger.getExpiredDate() && ledgerDB.getSellPrice().equals(ledger.getSellPrice()) ) {
                     ledgerDB.setQuantity(ledgerDB.getQuantity() + ledger.getQuantity());
+
                     ledgerDB.setGoodReceivedNote(goodReceivedNote);
                     ledgers.add(ledgerDB);
                 } else {
                     ledger.setGoodReceivedNote(goodReceivedNote);
+                    ledger.setLiveDead(LiveDead.ACTIVE);
                     ledgers.add(ledger);
                 }
             }
             ledger.setGoodReceivedNote(goodReceivedNote);
+            ledger.setLiveDead(LiveDead.ACTIVE);
             ledgers.add(ledger);
 
         }

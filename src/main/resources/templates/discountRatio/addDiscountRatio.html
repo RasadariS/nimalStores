@@ -7,39 +7,39 @@
 <body>
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
-<div class="container-fluid bg-secondary form-Border">
-    <div class="row text-center formManagement border-info">
-        <div class="col">
-            <a class="btn btn-primary" href="/home">
-                <i class="fa fa-home" style="font-size: 20px"></i> &nbsp; Home
-            </a>
-        </div>
-        <div class="col">
-            <h4 class="text-light text-center">
-                <strong>
-                    <span
-                            data-th-text="${addStatus==true?'New Discount Ratio Add':'Update Discount Ratio Details'}"></span>
-                </strong>
-            </h4>
-        </div>
-        <div class="col">
-            <a class="btn btn-primary" href="/discountRatio">
-                <i class="fa fa-list"></i>&nbsp; View List
-            </a>
-        </div>
-    </div>
-</div>
 <!--Form Content - start -->
-<div class="container-fluid ">
     <div class="col-sm-12 flex-column ">
         <form data-th-action="${addStatus==true?'/discountRatio/save':'/discountRatio/update'}"
               data-th-object="${discountRatio}"
               method="POST">
             <div class="row">
+                <div class="container-fluid bg-secondary form-Border">
+                    <div class="row text-center formManagement border-info">
+                        <div class="col">
+                            <a class="btn btn-success" href="/home">
+                                <i class="fa fa-home" style="font-size: 20px"></i> &nbsp; Home
+                            </a>
+                        </div>
+                        <div class="col">
+                            <h4 class="text-light text-center">
+                                <strong>
+                    <span
+                            data-th-text="${addStatus==true?'New Discount Ratio Add':'Update Discount Ratio Details'}"></span>
+                                </strong>
+                            </h4>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-success" href="/discountRatio">
+                                <i class="fa fa-list"></i>&nbsp; View List
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!--Left Side-->
                 <div class="form-group col-md-6 col-sm-6 text-left flex-column">
                     <input data-th-field="*{id}" data-th-if="${addStatus==false}" hidden type="text"/>
-                    <input type="text" data-th-if="${addStatus==false}" data-th-field="*{liveOrDead}" hidden>
+                    <input type="text" data-th-if="${addStatus==false}" data-th-field="*{liveDead}" hidden>
                     <!--Name-->
                     <div class="form-row text-right">
                         <div class="col-md-4">
@@ -101,7 +101,7 @@
             </div>
         </form>
     </div>
-</div>
+
 <div  data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}"></div>

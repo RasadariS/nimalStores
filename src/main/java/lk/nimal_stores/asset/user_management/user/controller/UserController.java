@@ -141,11 +141,7 @@ public class UserController {
     Designation designation = employee.getDesignation();
 
     // userService.persist(user);
-    if ( employee.getEmployeeStatus().equals(EmployeeStatus.WORKING) ) {
-      user.setEnabled(true);
-    } else {
-      user.setEnabled(false);
-    }
+    user.setEnabled(employee.getEmployeeStatus().equals(EmployeeStatus.WORKING));
     user.setRoles(user.getRoles());
     user.setEnabled(true);
     userService.persist(user);

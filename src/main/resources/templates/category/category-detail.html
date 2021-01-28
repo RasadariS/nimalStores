@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
+<html lang="en" >
+<head  data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>category-detail</title>
 </head>
 <body>
-<nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
+<nav  data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--heading Area-->
 <div class="container-fluid ">
@@ -20,7 +20,7 @@
         <div class="col">
             <h2 class="text-light text-center">
                 <strong>
-                    <p th:text="${categoryDetail.name}"></p>
+                    <p  data-th-text="${categoryDetail.name}"></p>
                 </strong>
             </h2>
         </div>
@@ -33,7 +33,7 @@
     </div>
 </div>
 <!--details-->
-<div th:fragment="categoryDetailsFragment" class="container-fluid bg-info formBorder">
+<div  data-th-fragment="categoryDetailsFragment" class="container-fluid bg-info formBorder">
     <div class="col-sm-12 flex-column ">
         <div class="row">
             <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
@@ -43,7 +43,7 @@
                         <label class="control-label" for="id">ID :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="id" th:text="${categoryDetail.id}" class="display_detail"></p>
+                        <p id="id"  data-th-text="${categoryDetail.id}" class="display_detail"></p>
                     </div>
                 </div>
                 <!--Main Category-->
@@ -52,7 +52,7 @@
                         <label class="control-label" for="mainCategory">Main Category :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="mainCategory" th:text="${categoryDetail.mainCategory.mainCategory}"
+                        <p id="mainCategory"  data-th-text="${categoryDetail.mainCategory.mainCategory}"
                            class="display_detail"></p>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         <label class="control-label" for="name">Name :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="name" th:text="${categoryDetail.name}"
+                        <p id="name"  data-th-text="${categoryDetail.name}"
                            class="display_detail"></p>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
     <br/>
 </div>
 
-<div  th:replace="~{fragments/footer :: footerFragment}"></div>
+<div   data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<script  data-th-replace="~{fragments/script :: scriptFragment}"></script>
 
 </body>
 </html>

@@ -38,7 +38,7 @@
 <!--Form Content - start -->
 <div class="container-fluid bg-info">
     <!--Supplier Search - Start-->
-    <div class="offset-1 flex-column" data-th-if="${searchAreaShow==true}">
+    <div class="offset-1 flex-column"  data-th-if="${searchAreaShow==true}">
         <form class="form-inline" data-th-action="${'/purchaseOrder/find'}" data-th-object="${purchaseOrder}"
               id="form" method="POST">
             <div class="form-row">
@@ -60,12 +60,12 @@
     </div>
     <!--Supplier Search - end-->
     <!--Supplier List Show - start-->
-    <div class="col-12 flex-column" data-th-if="${supplierDetailShow==true}">
+    <div class="col-12 flex-column"  data-th-if="${supplierDetailShow==true}">
         <div data-th-replace="~{supplier/supplier :: supplierFragment}"></div>
     </div>
     <!--Supplier List Show - end-->
     <!--Supplier Item add- start-->
-    <div class="col-12 flex-column" data-th-if="${supplierDetailShow==false}">
+    <div class="col-12 flex-column"  data-th-if="${supplierDetailShow==false}">
         <a aria-controls="hrefCollapse" aria-expanded="false" class="btn btn-primary col-12" data-toggle="collapse"
            href="#hrefCollapse">Show Supplier Details</a>
         <div class="collapse" id="hrefCollapse">
@@ -74,7 +74,7 @@
         <!--Purchase Order Item add Form - start-->
         <form class="mb-5" data-th-action="${'/purchaseOrder/save'}" data-th-object="${purchaseOrder}" method="POST">
             <input data-th-name="${'supplier'}" data-th-value="${supplierDetail.id}" id="supplier" type="hidden">
-            <div class="form-row col-md-6" data-th-if="${purchaseOrderItemEdit==false}">
+            <div class="form-row col-md-6"  data-th-if="${purchaseOrderItemEdit==false}">
                 <div class="col-md-4">
                     <label class="control-label" for="item">Select Items:</label>
                 </div>
@@ -132,7 +132,7 @@
 
                 </table>
             </div>
-            <div class="form-row col-md-6" data-th-if="${purchaseOrderItemEdit==false}">
+            <div class="form-row col-md-6"  data-th-if="${purchaseOrderItemEdit==false}">
                 <div class="col-md-4">
                     <label class="control-label" for="priority">Select Priority:</label>
                 </div>
@@ -146,7 +146,7 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group" data-th-if="${purchaseOrderItemEdit==false}">
+            <div class="form-group"  data-th-if="${purchaseOrderItemEdit==false}">
                 <label for="remark">Remarks</label>
                 <textarea class="form-control" data-th-name="${'remark'}" id="remark" rows="2"></textarea>
             </div>
@@ -169,7 +169,7 @@
         <!--Supplier Item add Form - end-->
     </div>
 </div>
-<input data-th-if="${supplierDetailShow==false}" data-th-value="${purchaseOrderItemUrl}" hidden
+<input  data-th-if="${supplierDetailShow==false}" data-th-value="${purchaseOrderItemUrl}" hidden
        id="purchaseOrderItemUrl" type="text">
 <!--Supplier Item add - end-->
 <footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>

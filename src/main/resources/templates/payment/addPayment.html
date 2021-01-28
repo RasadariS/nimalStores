@@ -31,7 +31,7 @@
             aria-expanded="false" aria-controls="dataTargetCollapse"
             data-th-text="${purchaseOrderNeedToPay.supplier.name +' need to pay purchase order list'}" ></button >
     <div class="collapse mx-auto" id="dataTargetCollapse" >
-      <div class="container-fluid" data-th-if="${not #lists.isEmpty(purchaseOrders)}" >
+      <div class="container-fluid"  data-th-if="${not #lists.isEmpty(purchaseOrders)}" >
         <div class="table-responsive" >
           <table class="table table-striped table-condensed" >
             <thead >
@@ -62,7 +62,7 @@
     </div >
   </div >
   <!--payment history according to particular purchase order -->
-  <div class="form-row" data-th-if="${not #lists.isEmpty(purchaseOrderNeedToPay.payments)}" >
+  <div class="form-row"  data-th-if="${not #lists.isEmpty(purchaseOrderNeedToPay.payments)}" >
     <div class="table-responsive" >
       <table class="table table-striped table-condensed" >
         <thead >
@@ -167,7 +167,7 @@
             <input class="form-control" data-th-field="*{amount}" id="amount" required tabindex="8"
                    type="number" min="0" step="0.01" placeholder="0.00" />
             <span class="text-warning"
-                  data-th-errors="*{amount}" data-th-if="${#fields.hasErrors('amount')}" >Error ROP</span >
+                  data-th-errors="*{amount}"  data-th-if="${#fields.hasErrors('amount')}" >Error ROP</span >
           </div >
         </div >
       </div >
