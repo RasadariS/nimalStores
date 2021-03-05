@@ -1,6 +1,7 @@
 package lk.nimalStores.configuration;
 
-import lk.nimalStores.asset.userManagement.service.UserDetailsServiceImpl;
+
+import lk.nimalStores.asset.user_management.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;

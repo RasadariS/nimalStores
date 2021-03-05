@@ -3,12 +3,15 @@ package lk.nimalStores.asset.invoice.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lk.nimalStores.asset.common_asset.model.enums.LiveDead;
 import lk.nimalStores.asset.customer.entity.Customer;
-import lk.nimalStores.asset.discountRatio.entity.DiscountRatio;
+import lk.nimalStores.asset.discount_ratio.entity.DiscountRatio;
 import lk.nimalStores.asset.invoice.entity.Enum.InvoicePrintOrNot;
 import lk.nimalStores.asset.invoice.entity.Enum.InvoiceValidOrNot;
 import lk.nimalStores.asset.invoice.entity.Enum.PaymentMethod;
+import lk.nimalStores.asset.invoice_ledger.entity.InvoiceLedger;
 import lk.nimalStores.util.audit.AuditEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,15 +53,16 @@ public class Invoice extends AuditEntity {
 
     @Column(precision = 10, scale = 2)
     private BigDecimal balance;
-
-    @Enumerated(EnumType.STRING)
-    private InvoicePrintOrNot invoicePrintOrNot;
+     private InvoicePrintOrNot invoicePrintOrNot;
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
     @Enumerated(EnumType.STRING)
     private InvoiceValidOrNot invoiceValidOrNot;
+
+    @Enumerated(EnumType.STRING)
+    private LiveDead liveDead;
 
     @ManyToOne
     private Customer customer;
@@ -67,7 +71,7 @@ public class Invoice extends AuditEntity {
     private DiscountRatio discountRatio;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "invoice")
-    private List< InvoiceItem > invoiceItemQuantities;
+    private List<InvoiceLedger> invoiceLedgers;
 
 
 }

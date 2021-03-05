@@ -2,9 +2,12 @@ package lk.nimalStores.asset.payment.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.nimalStores.asset.PurchaseOrder.entity.PurchaseOrder;
+
+import lk.nimalStores.asset.common_asset.model.enums.LiveDead;
 import lk.nimalStores.asset.invoice.entity.Enum.PaymentMethod;
+import lk.nimalStores.asset.purchase_order.entity.PurchaseOrder;
 import lk.nimalStores.util.audit.AuditEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +33,9 @@ public class Payment extends AuditEntity {
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
+
+    @Enumerated(EnumType.STRING)
+    private LiveDead liveDead;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;

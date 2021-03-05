@@ -1,11 +1,12 @@
 package lk.nimalStores.asset.supplier.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.nimalStores.asset.PurchaseOrder.entity.PurchaseOrder;
-import lk.nimalStores.asset.supplierItem.entity.Enum.ItemSupplierStatus;
-import lk.nimalStores.asset.supplierItem.entity.SupplierItem;
+import lk.nimalStores.asset.common_asset.model.enums.LiveDead;
+import lk.nimalStores.asset.purchase_order.entity.PurchaseOrder;
+import lk.nimalStores.asset.supplier_item.entity.SupplierItem;
+import lk.nimalStores.asset.supplier_item.entity.enums.ItemSupplierStatus;
 import lk.nimalStores.util.audit.AuditEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,13 +44,16 @@ public class Supplier extends AuditEntity {
     @Column( columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255 )
     private String address;
 
+    @Enumerated(EnumType.STRING)
+    private LiveDead liveDead;
+
     @Enumerated( EnumType.STRING )
     private ItemSupplierStatus itemSupplierStatus;
 
     @OneToMany( mappedBy = "supplier" )
-    private List< PurchaseOrder > purchaseOrders;
+    private List<PurchaseOrder> purchaseOrders;
 
     @OneToMany( mappedBy = "supplier" )
-    private List< SupplierItem > supplierItems;
+    private List<SupplierItem> supplierItems;
 
 }

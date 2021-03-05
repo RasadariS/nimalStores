@@ -1,9 +1,10 @@
 package lk.nimalStores.asset.customer.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.nimalStores.asset.commonAsset.model.Enum.Title;
+import lk.nimalStores.asset.common_asset.model.enums.LiveDead;
+import lk.nimalStores.asset.common_asset.model.enums.Title;
 import lk.nimalStores.util.audit.AuditEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,4 +46,8 @@ public class Customer extends AuditEntity {
 
     @Column(unique = true)
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private LiveDead liveDead;
+
 }

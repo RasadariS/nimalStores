@@ -1,8 +1,7 @@
 package lk.nimalStores.asset.message.controller;
 
 
-
-import lk.nimalStores.asset.commonAsset.service.CommonService;
+import lk.nimalStores.asset.common_asset.service.CommonService;
 import lk.nimalStores.asset.employee.entity.Employee;
 import lk.nimalStores.asset.employee.service.EmployeeService;
 import lk.nimalStores.asset.message.entity.EmailMessage;

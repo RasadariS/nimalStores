@@ -182,7 +182,7 @@ nav {
     box-shadow: 8px 8px 8px 8px white;
 
     border-radius: 50%;
-    background: linear-gradient(215deg, #5ca155, #a080c5, #56a4b6, #04c2ec, #f2e053);
+    background: linear-gradient(215deg, #56a4b6, #04c2ec );
     background-size: 1000% 1000%;
 
     -webkit-animation: AnimationName 10s ease infinite;
@@ -192,8 +192,7 @@ nav {
 }
 
 #iconIn {
-    font-size: 250px;
-    text-align: center;
+    font-size: 250px;   text-align: center;
 }
 
 #errorMessage {

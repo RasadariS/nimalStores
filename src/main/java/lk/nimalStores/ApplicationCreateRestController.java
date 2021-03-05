@@ -1,17 +1,18 @@
 package lk.nimalStores;
 
-import lk.nimalStores.asset.commonAsset.model.Enum.BloodGroup;
-import lk.nimalStores.asset.commonAsset.model.Enum.CivilStatus;
-import lk.nimalStores.asset.commonAsset.model.Enum.Gender;
-import lk.nimalStores.asset.commonAsset.model.Enum.Title;
+
+import lk.nimalStores.asset.common_asset.model.enums.CivilStatus;
+import lk.nimalStores.asset.common_asset.model.enums.Gender;
+import lk.nimalStores.asset.common_asset.model.enums.Title;
 import lk.nimalStores.asset.employee.entity.Employee;
 import lk.nimalStores.asset.employee.entity.Enum.Designation;
 import lk.nimalStores.asset.employee.entity.Enum.EmployeeStatus;
 import lk.nimalStores.asset.employee.service.EmployeeService;
-import lk.nimalStores.asset.userManagement.entity.Role;
-import lk.nimalStores.asset.userManagement.entity.User;
-import lk.nimalStores.asset.userManagement.service.RoleService;
-import lk.nimalStores.asset.userManagement.service.UserService;
+
+import lk.nimalStores.asset.user_management.role.entity.Role;
+import lk.nimalStores.asset.user_management.role.service.RoleService;
+import lk.nimalStores.asset.user_management.user.entity.User;
+import lk.nimalStores.asset.user_management.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -217,7 +217,7 @@ input::-webkit-input-placeholder {
   width: 100%; }
 
 .full-bg {
-  background-image: url(../images/bg_2.jpg);
+  background-image: url("../img/bg_2.jpg");
   background-size: cover;
   color: #FFF; }
   .full-bg h3 {
