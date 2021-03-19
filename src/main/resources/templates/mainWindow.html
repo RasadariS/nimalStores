@@ -1,21 +1,86 @@
 <!DOCTYPE html>
-<html lang="en"  >
-<head  data-th-replace="~{fragments/header :: headerFragment}" >
-  <meta charset="UTF-8" >
-  <title >Thymeleaf Springboot </title >
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
 
 </head >
-<body >
-<nav  data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
-<div>
-  <h1>Main window</h1>
-</div>
+<body class="sb-nav-fixed" >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<div id="layoutSidenav" >
+  <div data-th-replace="~{fragments/sideNav :: sideNavFragment}" >
+  </div >
+  <div id="layoutSidenav_content" >
+    <main >
+      <div class="container-fluid mainbody" >
+        <div class="row cardrow" >
+          <div class="col-4 " >
+            <div class="card text-white bg-primary" >
+              <div class="card-header" >Customer</div >
+              <div class="card-body" >
+                <img src="../img/customer.png" style="width:200px; " >
+              </div >
+            </div >
 
-<!--footer include-->
-<div  data-th-replace="~{fragments/footer :: footerFragment}" ></div >
-<!--script include-->
-<div  data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+          </div >
 
+
+          <div class="col-4" >
+            <div class="card text-white bg-secondary" >
+              <div class="card-header" >Employee</div >
+              <div class="card-body" >
+                <img src="../img/employee.png" style="width:220px; " >
+              </div >
+            </div >
+          </div >
+
+          <div class="col-4" >
+            <div class="card text-white bg-success" >
+              <div class="card-header" >Supplier</div >
+              <div class="card-body" >
+                <img src="../img/supplier2.png" style="width:130px;margin-left:50px" >
+              </div >
+            </div >
+          </div >
+
+        </div >
+
+        <div class="row cardrow" >
+          <div class="col-4" >
+            <div class="card text-white bg-danger" >
+              <div class="card-header" >Payment</div >
+              <div class="card-body" >
+                <img src="../img/payment.png" style="width:188px; " >
+              </div >
+            </div >
+          </div >
+          <div class="col-4" >
+            <div class="card text-white bg-warning" >
+              <div class="card-header" >Purchase Order</div >
+              <div class="card-body" >
+                <img src="../img/porder.png" style="width:200px; " >
+              </div >
+            </div >
+          </div >
+          <div class="col-4" >
+
+            <div class="card text-white bg-info" >
+              <div class="card-header" >Item</div >
+              <div class="card-body" >
+                <img src="../img/item.png" style="width:190px; " >
+              </div >
+            </div >
+          </div >
+
+
+        </div >
+
+      </div >
+    </main >
+    <!--footer include-->
+    <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+    <!--script include-->
+    <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+  </div >
+</div >
 </body >
 </html >

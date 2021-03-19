@@ -2,7 +2,6 @@ package lk.nimal_stores.asset.employee.controller;
 
 
 import lk.nimal_stores.asset.common_asset.model.enums.*;
-import lk.nimal_stores.asset.common_asset.service.CommonService;
 import lk.nimal_stores.asset.employee.entity.Employee;
 import lk.nimal_stores.asset.employee.entity.EmployeeFiles;
 import lk.nimal_stores.asset.employee.entity.enums.Designation;
@@ -11,7 +10,6 @@ import lk.nimal_stores.asset.employee.service.EmployeeFilesService;
 import lk.nimal_stores.asset.employee.service.EmployeeService;
 import lk.nimal_stores.asset.user_management.user.entity.User;
 import lk.nimal_stores.asset.user_management.user.service.UserService;
-import lk.nimal_stores.util.service.DateTimeAgeService;
 import lk.nimal_stores.util.service.MakeAutoGenerateNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -35,21 +33,16 @@ import java.util.stream.Collectors;
 public class EmployeeController {
   private final EmployeeService employeeService;
   private final EmployeeFilesService employeeFilesService;
-  private final DateTimeAgeService dateTimeAgeService;
-  private final CommonService commonService;
   private final UserService userService;
 
   private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
 
   @Autowired
   public EmployeeController(EmployeeService employeeService, EmployeeFilesService employeeFilesService,
-                            DateTimeAgeService dateTimeAgeService,
-                            CommonService commonService, UserService userService,
+                             UserService userService,
                             MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
     this.employeeService = employeeService;
     this.employeeFilesService = employeeFilesService;
-    this.dateTimeAgeService = dateTimeAgeService;
-    this.commonService = commonService;
     this.userService = userService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
@@ -134,16 +127,16 @@ public class EmployeeController {
       return commonThings(model);
     }
 
-    employee.setMobileOne(commonService.commonMobileNumberLengthValidator(employee.getMobileOne()));
-    employee.setMobileTwo(commonService.commonMobileNumberLengthValidator(employee.getMobileTwo()));
-    employee.setLand(commonService.commonMobileNumberLengthValidator(employee.getLand()));
+    employee.setMobileOne(makeAutoGenerateNumberService.phoneNumberLengthValidator(employee.getMobileOne()));
+    employee.setMobileTwo(makeAutoGenerateNumberService.phoneNumberLengthValidator(employee.getMobileTwo()));
+    employee.setLand(makeAutoGenerateNumberService.phoneNumberLengthValidator(employee.getLand()));
 
     if ( employee.getId() == null ) {
       Employee lastEmployee = employeeService.lastEmployee();
       if ( lastEmployee.getCode() == null ) {
-        employee.setCode("JNSE" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
+        employee.setCode("SSCE" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
       } else {
-        employee.setCode("JNSE" + makeAutoGenerateNumberService.numberAutoGen(lastEmployee.getCode().substring(4)).toString());
+        employee.setCode("SSCE" + makeAutoGenerateNumberService.numberAutoGen(lastEmployee.getCode().substring(4)).toString());
       }
     }
 

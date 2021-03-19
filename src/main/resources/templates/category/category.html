@@ -1,88 +1,101 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head  data-th-replace="~{fragments/header :: headerFragment}">
-    <meta charset="UTF-8">
-    <title>category</title>
-</head>
-<body>
-<nav  data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >category</title >
+</head >
+<body class="sb-nav-fixed" >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<div id="layoutSidenav" >
+  <div data-th-replace="~{fragments/sideNav :: sideNavFragment}" >
+  </div >
+  <div id="layoutSidenav_content" >
+    <main >
 
-<!--Heading Area-->
-<div class="container-fluid ">
-    <div class="row text-center formManagement border-info">
-        <!-- New Category Button-->
-        <div class="col">
-            <a class="btn btn-success" href="/category/add"><i class="fa fa-user-plus" style="font-size: 20px"></i>&nbsp;&nbsp;New</a>&nbsp;
-        </div>
-        <!-- List Name-->
-        <div class="col">
-            <h2 class="text-light text-center">
-                <strong>
-                    Category Management
-                </strong>
-            </h2>
-        </div>
-        <!-- Home Button-->
-        <div class="col">
-            <a href="/category/workingPlace" id="searchShow" class="btn btn-primary">
-            <!--<i class="fa fa-user " style="font-size: 20px"></i>-->
-                <i class="fas fa-home" style="font-size: 20px"></i>&nbsp;&nbsp;Home
-                &nbsp;
-            </a>
-        </div>
-    </div>
-</div>
-<div class="container-fluid bg-info formBorder text-center">
-    <!--Table view-->
-    <div class="col">
-        <div class="col" id="categoryListPresent"  data-th-if="${not #lists.isEmpty(categorys)}">
-            <table class="table table-hover table-striped" id="myTable">
-                <thead>
-                    <tr>
-                        <th> Index</th>
-                        <th> Main Category</th>
-                        <th> Name</th>
-                        <th> Modify</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr  data-th-each="category, rowCount : ${categorys}">
-                        <th  data-th-text="${rowCount.count}"></th>
-                        <th  data-th-text="${category.mainCategory.mainCategory}"></th>
-                        <th  data-th-text="${category.name}"></th>
-                        <th>
-                            <a id="categoryView"  data-th-href="${'/category/' + category.id}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>
-                            <a id="categoryEdit"  data-th-href="${'/category/edit/' + category.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
-                            <a id="categoryRemove"  data-th-href="${'/category/remove/' + category.id}" class="btn btn-danger btn-sm">
-                             <!--  data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"--> <i class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!--Error-->
-    <div class="row"  data-th-if="${ #lists.isEmpty(categorys)}">
-        <div class="col-sm-12">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h3 class="text-center text-danger">
-                    <strong>There is no category upto now please add category to the system using "New" button.</strong>
-                </h3>
-            </div>
-        </div>
-        <script>
-            /*active boostrap alert - start*/
-            $(".alert").alert();
-            /*active boostrap alert - end*/
-        </script>
-    </div>
-</div>
-<div   data-th-replace="~{fragments/footer :: footerFragment}"></div>
-<!--script include-->
-<script  data-th-replace="~{fragments/script :: scriptFragment}"></script>
+      <!--Heading Area-->
+      <div class="container-fluid " >
+        <div class="row text-center formManagement border-info" >
+          <!-- New Category Button-->
+          <div class="col" >
+            <a class="btn btn-success" href="/category/add" ><i class="fa fa-user-plus" style="font-size: 20px" ></i >&nbsp;&nbsp;New</a >&nbsp;
+          </div >
+          <!-- List Name-->
+          <div class="col" >
+            <h2 class="text-light text-center" >
+              <strong >
+                Category Management
+              </strong >
+            </h2 >
+          </div >
+          <!-- Home Button-->
+          <div class="col" >
+            <a href="/category/workingPlace" id="searchShow" class="btn btn-primary" >
+              <!--<i class="fa fa-user " style="font-size: 20px"></i>-->
+              <i class="fas fa-home" style="font-size: 20px" ></i >&nbsp;&nbsp;Home
+              &nbsp;
+            </a >
+          </div >
+        </div >
+      </div >
+      <div class="container-fluid   text-center" >
+        <!--Table view-->
+        <div class="col" >
+          <div class="col" id="categoryListPresent" data-th-if="${not #lists.isEmpty(categorys)}" >
+            <table class="table table-hover table-striped" id="myTable" >
+              <thead >
+              <tr >
+                <th > Index</th >
+                <th > Main Category</th >
+                <th > Name</th >
+                <th > Modify</th >
+              </tr >
+              </thead >
+              <tbody >
+              <tr data-th-each="category, rowCount : ${categorys}" >
+                <th data-th-text="${rowCount.count}" ></th >
+                <th data-th-text="${category.mainCategory.mainCategory}" ></th >
+                <th data-th-text="${category.name}" ></th >
+                <th >
+                  <a id="categoryView" data-th-href="${'/category/' + category.id}" class="btn btn-primary btn-sm" ><i
+                        class="fa fa-folder-open" style="font-size: 15px" ></i >&nbsp;View</a >
+                  <a id="categoryEdit" data-th-href="${'/category/edit/' + category.id}"
+                     class="btn btn-success btn-sm" ><i class="fa fa-edit" style="font-size: 15px" ></i >&nbsp;Edit</a >
+                  <a id="categoryRemove" data-th-href="${'/category/remove/' + category.id}"
+                     class="btn btn-danger btn-sm"  data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+               <i class="fa fa-trash"
+                                                                                                     style="font-size: 15px" ></i >
+                    Delete</a >
+                </th >
+              </tr >
+              </tbody >
+            </table >
+          </div >
+        </div >
+        <!--Error-->
+        <div class="row" data-th-if="${ #lists.isEmpty(categorys)}" >
+          <div class="col-sm-12" >
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+                <span aria-hidden="true" >&times;</span >
+              </button >
+              <h3 class="text-center text-danger" >
+                <strong >There is no category upto now please add category to the system using "New" button.</strong >
+              </h3 >
+            </div >
+          </div >
+        </div >
+      </div >
+    </main >
+    <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+    <!--script include-->
+    <script data-th-replace="~{fragments/script :: scriptFragment}" ></script >
+  </div >
+</div >
 
-</body>
-</html>
+<script >
+    /*active boostrap alert - start*/
+    $(".alert").alert();
+    /*active boostrap alert - end*/
+</script >
+</body >
+</html >

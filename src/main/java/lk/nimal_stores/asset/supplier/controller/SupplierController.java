@@ -1,5 +1,6 @@
 package lk.nimal_stores.asset.supplier.controller;
 
+
 import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.supplier.entity.Supplier;
 import lk.nimal_stores.asset.supplier.service.SupplierService;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/supplier")
-public  class SupplierController implements AbstractController<Supplier, Integer> {
+public  class SupplierController implements AbstractController< Supplier, Integer> {
     private final SupplierService supplierService;
     private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
 
@@ -69,12 +70,12 @@ public  class SupplierController implements AbstractController<Supplier, Integer
 
             if (DBSupplier == null) {
                 //need to generate new one
-                supplier.setCode("JNSS"+makeAutoGenerateNumberService.numberAutoGen(null).toString());
+                supplier.setCode("SSCS"+makeAutoGenerateNumberService.numberAutoGen(null).toString());
             } else {
-                System.out.println("last supplier not null");
+
                 //if there is supplier in db need to get that supplier's code and increase its value
                 String previousCode = DBSupplier.getCode().substring(4);
-                supplier.setCode("JNSS"+makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
+                supplier.setCode("SSCS"+makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
             }
             //send welcome message and email
             if (supplier.getEmail() != null) {

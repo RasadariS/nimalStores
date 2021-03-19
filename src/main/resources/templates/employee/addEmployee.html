@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
 </head >
@@ -46,11 +46,11 @@
             </div >
             <div class="col-md-8" >
               <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
-              <input type="text" data-th-field="*{liveDead}" hidden>
+              <input type="text" data-th-field="*{liveDead}" hidden >
             </div >
           </div >
           <!--Payrole number-->
-          <div class="form-row text-right" data-th-if="${addStatus==false}">
+          <div class="form-row text-right" data-th-if="${addStatus==false}" >
             <div class="col-md-4" >
               <label class="control-label" for="name" >Employee code :</label >
             </div >
@@ -120,17 +120,17 @@
             </div >
             <div class="col-md-8" >
               <div class="custom-control custom-checkbox custom-control-inline "
-                   data-th-each="genders,index : ${gender}">
+                   data-th-each="genders,index : ${gender}" >
                 <input class="custom-control-input gender" required
                        data-th-name="${'gender'}"
                        data-th-value="${genders}"
                        data-th-id="${index.index}+${genders}" type="radio"
-                       data-th-checked="${genders==gender}"/>
+                       data-th-checked="${genders==gender}" />
                 <label class="custom-control-label"
                        data-th-for="${index.index}+${genders}"
-                       data-th-text="${genders.gender}"> radio
-                </label>
-              </div>
+                       data-th-text="${genders.gender}" > radio
+                </label >
+              </div >
             </div >
           </div >
           <!--Date of birth-->
