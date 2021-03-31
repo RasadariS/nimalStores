@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf Springboot </title>
+
+    <!--style sheet ekak link karanne mehemai-->
+    <link rel="stylesheet" data-th-href="@{/css/myCss.css}">
+</head>
+<body>
+
+<div class="form-area">
+    <form th:action="${'/login'}" method="post">
+    <h2>Samarasinghe Super</h2>
+
+    <p> User Name :</p>
+    <input type="text" name="username" id="username" th:name="${'username'}" placeholder="Enter User Name" required>
+
+    <p>Password :</p>
+    <input type="password" id="inputPassword" th:name="${'password'}" placeholder="Enter Password" required>
+
+    <div style="margin-top:10px">
+        <button id="btnLogin" class="col-md-12 btn btn-primary"><i class= "fa fa-key" style="margin-right: 10px;font-size: 18px"></i>Login</button>
+    </div>
+
+<div class="container-fluid " th:if="${param.error}">
+                <p class="bg-white text-capitalize text-danger text-lg-center">Invalid username or password. </p>
+            </div>
+            <div class="container-fluid ">
+                <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
+            </div>
+        </form>
+</div>
+
+<!--footer include-->
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+<!--script include-->
+<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+
+</body>
+</html>

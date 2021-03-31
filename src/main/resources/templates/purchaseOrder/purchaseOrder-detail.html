@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Samarasinghe Super</title >
+</head >
+<body>
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+      <!--heading Area-->
+      <div class="container-fluid " >
+        <div class="row text-center formManagement border-info" >
+          <!--View List Button-->
+          <div class="col" >
+            <a href="/item" class="btn btn-primary" tabindex="2" >
+              <i class="fa fa-list" style="font-size: 20px" ></i >&nbsp; View List
+            </a >
+          </div >
+          <!--Item Name-->
+          <div class="col" >
+            <p class="h2 text-white font-weight-bold"
+               data-th-text="${purchaseOrderDetail.supplier.name +' - '+purchaseOrderDetail.code }" ></p >
+          </div >
+          <!--Home Button-->
+          <div class="col" >
+            <a class="btn btn-primary" href="/home" tabindex="1" >
+              <i class="fa fa-home" style="font-size: 20px" ></i > &nbsp; Home
+            </a >
+          </div >
+        </div >
+      </div >
+      <!--details-->
+      <div data-th-fragment="purchaseOrderDetailsFragment" class="container-fluid  " id="purchaseOrder" >
+        <div class="col-sm-12 flex-column " >
+          <div class="row" >
+            <div class="form-group col-md-12 col-sm-12 text-center flex-column " id="supplierDetail" >
+              <div class="row " >
+                <!--Left Side-->
+                <div class="form-group col-md-6 col-sm-6 text-left flex-column" >
+                  <!--code-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="id" >Code :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p id="id" data-th-text="${purchaseOrderDetail.code}" class="display_detail" ></p >
+                    </div >
+                  </div >
+                  <!--Supplier Name-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="departmentIdNumber" >Supplier Name :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p id="departmentIdNumber" data-th-text="${purchaseOrderDetail.supplier.name}"
+                         class="display_detail" ></p ></div >
+                  </div >
+                  <!--Purchase Order Priority-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="mainCategory" >Purchase Order Priority :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p id="mainCategory"
+                         data-th-text="${purchaseOrderDetail.purchaseOrderPriority.PurchaseOrderPriority}"
+                         class="display_detail" ></p >
+                    </div >
+                  </div >
+                  <!--Purchase Order Status-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="subCategory" >Purchase Order Status :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p id="subCategory"
+                         data-th-text="${purchaseOrderDetail.purchaseOrderStatus.purchaseOrderStatus}"
+                         class="display_detail" ></p >
+                    </div >
+                  </div >
+                  <!--Name-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="name" >Price :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p id="name" data-th-text="${purchaseOrderDetail.price}"
+                         class="display_detail" ></p >
+                    </div >
+                  </div >
+                  <!--Remark-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="rop" >Remarks :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p id="rop" data-th-utext="${purchaseOrderDetail.remark}"
+                         class="display_detail" ></p >
+                    </div >
+                  </div >
+                </div >
+                <!--Right Side-->
+                <div class="form-group col-md-6 col-sm-6 text-right flex-column" >
+                  <!--owner name-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="mainCategory" >Form :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p >Samarasinghe Super</p >
+                    </div >
+                  </div >
+                  <!--owner address-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="subCategory" >Address :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p > Ragama Road <br > Kadawatha</p >
+                    </div >
+                  </div >
+                  <!--Created By-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="createdBy" >Created By :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p id="createdBy" data-th-text="${purchaseOrderDetail.createdBy}"
+                         class="display_detail" ></p >
+                    </div >
+                  </div >
+                  <!--Created at-->
+                  <div class="form-row text-right" >
+                    <div class="col-md-4" >
+                      <label class="control-label" for="createdAt" >Created At :</label >
+                    </div >
+                    <div class="col-md-8" >
+                      <p id="createdAt"
+                         data-th-text="${#temporals.format(purchaseOrderDetail.createdAt, 'dd-MM-yyyy HH:mm')}"
+                         class="display_detail" ></p >
+                    </div >
+                  </div >
+                </div >
+              </div >
+            </div >
+            <!--purchase order items -->
+            <div class="form-group col-md-12 col-sm-12 text-center flex-column" >
+              <div class="form-row" >
+                <label class="control-label text-capitalize font-weight-bold" >Selected Items :</label >
+              </div >
+              <div class="container-fluid table-responsive" >
+                <table class="table table-striped " >
+                  <thead >
+                  <tr >
+                    <th >Index</th >
+                    <th >Item Name</th >
+                    <th >ROP</th >
+                    <th >Buying Price (Rs.)</th >
+                    <th >Request Quantity</th >
+                    <th >Line Total</th >
+                  </tr >
+                  </thead >
+                  <tbody >
+                  <tr data-th-each="purchaseOrderItem, index : ${purchaseOrderDetail.purchaseOrderItems}" >
+                    <td data-th-text="${index.count}" ></td >
+                    <td data-th-text="${purchaseOrderItem.item.name}" ></td >
+                    <td data-th-text="${purchaseOrderItem.item.rop}" ></td >
+                    <td data-th-text="${purchaseOrderItem.buyingPrice}" ></td >
+                    <td data-th-text="${purchaseOrderItem.quantity}" ></td >
+                    <td data-th-text="${purchaseOrderItem.lineTotal}" ></td >
+                  </tr >
+                  </tbody >
+                </table >
+              </div >
+            </div >
+          </div >
+        </div >
+      </div >
+      <!--Payment History -->
+      <div class="form-group col-md-12 col-sm-12 text-center flex-column"
+           data-th-if="${ #lists.isEmpty(purchaseOrderDetail.payments)}" >
+        <div class="form-row" >
+          <label class="control-label text-capitalize font-weight-bold" >Payment History :</label >
+        </div >
+        <div class="container-fluid table-responsive" >
+          <table class="table table-striped " >
+            <thead >
+            <tr >
+              <th >Index</th >
+              <th >Number</th >
+              <th >Bank Name</th >
+              <th >Payment Method</th >
+              <th >Amount</th >
+              <th >Remarks</th >
+            </tr >
+            </thead >
+            <tbody >
+            <tr data-th-each="payment, index : ${purchaseOrderDetail.payments}" >
+              <td data-th-text="${index.count}" ></td >
+              <td data-th-text="${payment.code}" ></td >
+              <td data-th-text="${payment.bankName}" ></td >
+              <td data-th-text="${payment.paymentMethod.paymentMethod}" ></td >
+              <td data-th-text="${{payment.amount}}" ></td >
+              <td data-th-text="${payment.remarks}" ></td >
+            </tr >
+            </tbody >
+          </table >
+        </div >
+      </div >
+
+      <div class="container-fluid" >
+        <div class="offset-2 col-8 col-sm-8 col-md-8" data-th-if="${ #lists.isEmpty(purchaseOrderDetail.payments)}" >
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+              <span aria-hidden="true" >&times;</span >
+            </button >
+            <h3 class="text-center text-danger" >
+              <strong >There is no payment upto now.</strong >
+            </h3 >
+          </div >
+        </div >
+      </div >
+
+
+      <!--Back Button-->
+      <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+        <a href="/purchaseOrder" >
+          <button class="btn btn-dark" type="button" tabindex="3" >
+            <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp; &nbsp;Back
+          </button >
+        </a >
+        <button class="btn btn-success" type="button" id="btnPrintResult" >
+          <i class="fa fa-save" style="font-size: 20px" ></i > Print
+        </button >
+      </div >
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+<script >
+
+    $("#btnPrintResult").click(function () {
+        $("#purchaseOrder").addClass("mt-3 pt-3")
+        printContent("purchaseOrder")
+    })
+</script >
+</body >
+</html >
