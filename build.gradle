@@ -19,7 +19,9 @@ repositories {
 springBoot {
 	buildInfo {
 		properties {
-			group = 'lk.w3Academy'
+
+			group = 'lk.nimal_store'
+
 			version = '0.0.1-SNAPSHOT'
 			sourceCompatibility = '11'
 		}
@@ -52,9 +54,9 @@ dependencies {
 // https://mvnrepository.com/artifact/org.webjars/bootstrap
 	compile group: 'org.webjars', name: 'bootstrap', version: '4.4.1'
 // https://mvnrepository.com/artifact/org.webjars/popper.js
-	compile group: 'org.webjars', name: 'popper.js', version: '1.15.0'
+	compile group: 'org.webjars', name: 'popper.js', version: '2.5.4'
 // https://mvnrepository.com/artifact/org.webjars/jquery
-	compile group: 'org.webjars', name: 'jquery', version: '3.4.1'
+	compile group: 'org.webjars', name: 'jquery', version: '3.5.1'
 // https://mvnrepository.com/artifact/org.webjars/jquery-ui
 	compile group: 'org.webjars', name: 'jquery-ui', version: '1.12.1'
 // https://mvnrepository.com/artifact/org.webjars/font-awesome
@@ -87,7 +89,7 @@ test {
 	useJUnitPlatform()
 }
 
-/*To boot run*/
 bootRun {
 	sourceResources sourceSets.main
 }
+
