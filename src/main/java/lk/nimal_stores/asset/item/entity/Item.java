@@ -40,13 +40,13 @@ public class Item extends AuditEntity {
 
     @Column( nullable = false, precision = 10, scale = 2 )
     private BigDecimal sellPrice;
-
+//Ahanna oni ai me kiyala
     @Enumerated( EnumType.STRING )
     private ItemStatus itemStatus;
 
     @Enumerated(EnumType.STRING)
     private LiveDead liveDead;
-
+    //Ahanna oni ai me kiyala
     @ManyToOne
     private Category category;
 

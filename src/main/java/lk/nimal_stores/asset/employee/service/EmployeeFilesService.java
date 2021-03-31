@@ -8,7 +8,6 @@ import lk.nimal_stores.asset.employee.entity.Employee;
 import lk.nimal_stores.asset.employee.entity.EmployeeFiles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
@@ -52,7 +51,7 @@ public class EmployeeFilesService {
         return employeeFilesDao.findByNewId(filename);
     }
 
-    @Cacheable
+
     public FileInfo employeeFileDownloadLinks(Employee employee) {
         EmployeeFiles employeeFiles = employeeFilesDao.findByEmployee(employee);
         if (employeeFiles != null) {

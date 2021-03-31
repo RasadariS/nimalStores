@@ -82,7 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authorizeRequests ->
             authorizeRequests
                 .antMatchers(ALL_PERMIT_URL).permitAll()
-                .antMatchers("/category/**").hasAnyRole("ADMIN","PROCUREMENT_MANAGER")
+                .antMatchers("/category/**").hasAnyRole("ADMIN","PROCUREMENT_MANAGER","CASHIER","MANAGER")
                 .antMatchers("/category/**").hasAnyRole("CASHIER","MANAGER")
                 .antMatchers("/discountRatio/**").hasAnyRole("PROCUREMENT_MANAGER","MANAGER")
                 .antMatchers("/employee/**").hasAnyRole("MANAGER","HR_MANAGER" ,"ADMIN")

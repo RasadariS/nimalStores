@@ -1,6 +1,5 @@
 package lk.nimal_stores.asset.customer.controller;
 
-
 import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.common_asset.model.enums.Title;
 import lk.nimal_stores.asset.customer.entity.Customer;
@@ -30,7 +29,7 @@ public  class CustomerController implements AbstractController<Customer, Integer
     private final TwilioMessageService twilioMessageService;
 
     @Autowired
-    public CustomerController(CustomerService customerService, MakeAutoGenerateNumberService makeAutoGenerateNumberService, EmailService emailService, TwilioMessageService twilioMessageService) {
+    public CustomerController(CustomerService customerService, MakeAutoGenerateNumberService makeAutoGenerateNumberService,EmailService emailService,TwilioMessageService twilioMessageService) {
         this.customerService = customerService;
         this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
         this.emailService = emailService;
@@ -87,10 +86,10 @@ public  class CustomerController implements AbstractController<Customer, Integer
             }
             //send welcome message and email
             if (customer.getEmail() != null) {
-                emailService.sendEmail(customer.getEmail(), "Welcome Message", "Welcome to Kmart Super...");
+                emailService.sendEmail(customer.getEmail(), "Welcome Message", "Welcome to Samarasinghe Super...");
             }
             if (customer.getMobile() != null) {
-            //    twilioMessageService.sendSMS(customer.getMobile(), "Welcome to Kmart Super");
+            //    twilioMessageService.sendSMS(customer.getMobile(), "Welcome to Samarasinghe Super");
             }
         }
 

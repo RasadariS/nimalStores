@@ -81,12 +81,13 @@ public class UserController {
   //Send a searched employee to add working place
   @PostMapping( value = "/workingPlace" )
   public String addUserEmployeeDetails(@ModelAttribute( "employee" ) Employee employee, Model model) {
-
+    System.out.println(employee.toString() + "   employee");
     List< Employee > employees = employeeService.search(employee)
         .stream()
         .filter(userService::findByEmployee)
         .collect(Collectors.toList());
 
+    System.out.println("sss  "+ employees.size());
     if ( employees.size() == 1 ) {
       model.addAttribute("user", new User());
       model.addAttribute("employee", employees.get(0));

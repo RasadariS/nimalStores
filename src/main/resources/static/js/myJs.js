@@ -14,40 +14,40 @@ $(document).ready(function () {
 
 
     /*//--------------- data table short using - data table plugin ------- start //*/
-    if ($("#myTable").length !== 0) {
-        $("#myTable").DataTable({
-            "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
-            "ordering": false,
-            stateSave: true,
-        });
-    }
+    $("#myTable").DataTable({
+        "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
+        "ordering": false,
+        stateSave: true,
+    });
     /*//--------------- data table short using - data table plugin ------- start //*/
 
     /*When edit employee if there is a nic number need to select relevant gender*/
-    if ($("#nic").val()){
-        $("input:radio[name=gender]").filter(`[value=${calculateGender($("#nic").val())}]`).prop('checked',true);
+    if ($("#nic").val() !== null && $("#nic").val() !== undefined) {
+        $("input:radio[name=gender]").filter(`[value=${calculateGender($("#nic").val())}]`).prop('checked', true);
     }
+
 
     /* Patient and employee Nic Validation - start*/
     $("#nic").bind('keyup', function () {
         let nic = $(this).val();
         $("#dateOfBirth").val(calculateDateOfBirth(nic));
-//access our front-end gender*/
-        $("input:radio[name=gender]").filter(`[value=${calculateGender(nic)}]`).prop('checked',true);
+        //access our front-end gender*/
+        $("input:radio[name=gender]").filter(`[value=${calculateGender(nic)}]`).prop('checked', true);
 
     });
 
 
-});
 
+});
 
 
 // regex
 let nicRegex = /^([0-9]{9}[vV|xX])|^([0-9]{12})$/;
 let mobileRegex = /^([0][7][\d]{8}$)|^([7][\d]{8})$/;
 let landRegex = /^0((11)|(2(1|[3-7]))|(3[1-8])|(4(1|5|7))|(5(1|2|4|5|7))|(6(3|[5-7]))|([8-9]1))([2-4]|5|7|9)[0-9]{6}$/;
-let nameRegex = /^[a-zA-Z .-]{5}[ a-zA-Z.-]+$/;
-
+let nameRegex = /^[a-zA-Z .-]{3}[ a-zA-Z.-]+$/;
+let numberRegex = /^([eE][hH][sS][\d]+)$/;
+let invoiceNumberRegex = /^[0-9]{10}$/;
 
 
 //Nic - data of birth - start
@@ -287,7 +287,15 @@ $("#callingName").bind("keyup", function () {
         backgroundColourChangeBad($(this));
     }
 });
-
+//invoiceNumber validation
+$("#invoiceNumber").bind("keyup", function () {
+    let invoiceNumber = $(this).val();
+    if (invoiceNumberRegex.test(invoiceNumber)) {
+        backgroundColourChangeGood($(this));
+    } else {
+        backgroundColourChangeBad($(this));
+    }
+});
 
 //colour change function --start
 let backgroundColourChangeGood = function (id) {
@@ -347,29 +355,102 @@ let conformationAndLoginWindow = function () {
         }
     });
 };
-// start date and end date validation
-$("#startDate, #endDate").bind('change',
-    function () {
-        console.log("sdsadasda")
-        let manufactureDate = $(`#startDate`).val();
-        let expiredDate = $(`#endDate`).val();
 
-        if (manufactureDate.length !==0 && expiredDate.length !==0) {
-            if (Date.parse(manufactureDate) > Date.parse(expiredDate)) {
-                swal({
-                    title: "Could you accept those days.. !",
-                    icon: "warning",
-                    text: "Please check your date \n Expire Date can not be less than Manufacture Date",
-                })
-                $(`#endDate`).val($(`#startDate`).val());
-            }
+
+$("#startDate, #endDate").bind("click", function () {
+    let startDate = document.getElementById("startDate").value;
+    let endDate = document.getElementById("endDate").value;
+
+    if (endDate.length !== 0) {
+        $('#startDate').attr('max', $('#endDate').val());
+    }
+    if (startDate.length !== 0) {
+        $('#endDate').attr('min', $('#startDate').val());
+    }
+
+//only start date has value
+    if (startDate.length !== 0 && endDate.length !== 0) {
+        let milliSecondStartDate = Date.parse(startDate);
+        let milliSecondEndDate = Date.parse(endDate);
+        if (milliSecondEndDate > milliSecondStartDate) {
+            backgroundColourChangeGood($(this));
+        } else {
+            backgroundColourChangeBad($(this));
         }
-    });
+    } else {
+        backgroundColourChangeNothingToChange($(this));
+    }
+});
+
+$("#btnSummaryFind").bind("mouseover", function () {
+    let endDate = document.getElementById("endDate").value;
+    let startDate = document.getElementById("startDate").value;
+
+    //if both date filed has some thing
+    if (endDate.length !== 0 && startDate.length !== 0) {
+
+        let milliSecondStartDate = Date.parse(startDate);
+        let milliSecondEndDate = Date.parse(endDate);
+
+        if (milliSecondToDay < milliSecondStartDate || milliSecondToDay < milliSecondEndDate) {
+            swal({
+                title: "Date range is not valid",
+                icon: "warning",
+            });
+        }
+    } else {
+        swal({
+            title: "Please re-check date filed",
+            icon: "warning",
+        });
+    }
+});
+//Search form date validation — end
 
 //Customer employee Search filed - start any way in project
 
+/*Employee working place - */
+$("#selectParameter").bind("change", function () {
+    btnSearchEmployeeShow();
+    $("#selectParameter").css('background', '');
+    //set what is the parameter will search
+    $("#valueEmployee").attr('name', $(this).val());
+    $("#valueEmployee").val('');
+    backgroundColourChangeNothingToChange($("#valueEmployee"));
+});
 
+/*Employee Find */
+$("#valueEmployee").bind("keyup", function () {
+    let selectedValue = $("#valueEmployee").attr('name');
+    if ($("#valueEmployee").val() !== '' && $("#selectParameter").val() === '') {
+        $("#selectParameter").css('background', '#dc3545');
+        swal({
+            title: "Please enter select parameter value before type here",
+            icon: "warning",
+        });
+    }
+    if (selectedValue === "nic") {
+        let nic = $("#valueEmployee");
+        if (nicRegex.test($("#valueEmployee").val())) {
+            backgroundColourChangeGood(nic);
+        } else if (nic.length === 0) {
+            backgroundColourChangeNothingToChange(nic);
+        } else {
+            backgroundColourChangeBad(nic);
+        }
+    }
+    btnSearchEmployeeShow();
 
+});
+
+let btnSearchEmployeeShow = function () {
+    if ($("#selectParameter").val() !== '' && $("#valueEmployee").val() !== '') {
+        $("#btnSearchEmployee").css('display', '');
+    } else {
+        $("#btnSearchEmployee").css('display', 'none');
+    }
+};
+//Customer employee Search filed - end any way in project
 
 //If there is any need to clean filled data in table to clean plz use this mwthod
 
@@ -384,7 +465,6 @@ let deleteAllTableRow = function (tableName) {
         }
     }
 };
-
 
 
 //password validator user add
@@ -463,4 +543,3 @@ $(".reveal").on('click', function () {
         $pwd.attr('type', 'password');
     }
 });
-

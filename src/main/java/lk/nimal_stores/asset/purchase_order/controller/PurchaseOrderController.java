@@ -1,6 +1,5 @@
 package lk.nimal_stores.asset.purchase_order.controller;
 
-
 import lk.nimal_stores.asset.common_asset.service.CommonService;
 import lk.nimal_stores.asset.item.entity.Item;
 import lk.nimal_stores.asset.item.service.ItemService;
@@ -41,7 +40,8 @@ public class PurchaseOrderController {
 
     public PurchaseOrderController(PurchaseOrderService purchaseOrderService,
                                    PurchaseOrderItemService purchaseOrderItemService, SupplierService supplierService
-            , CommonService commonService, ItemService itemService, MakeAutoGenerateNumberService makeAutoGenerateNumberService, EmailService emailService,
+            , CommonService commonService, ItemService itemService,MakeAutoGenerateNumberService makeAutoGenerateNumberService,
+                                   EmailService emailService,
                                    TwilioMessageService twilioMessageService) {
         this.purchaseOrderService = purchaseOrderService;
       this.purchaseOrderItemService = purchaseOrderItemService;

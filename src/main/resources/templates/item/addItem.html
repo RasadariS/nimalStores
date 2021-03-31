@@ -4,15 +4,11 @@
   <meta charset="UTF-8" >
   <title >addItem</title >
 </head >
-<body class="sb-nav-fixed" >
+<body>
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
-<div id="layoutSidenav" >
-  <div data-th-replace="~{fragments/sideNav :: sideNavFragment}" >
-  </div >
-  <div id="layoutSidenav_content" >
-    <main >
+
       <!--Form Content-->
-      <div class="container-fluid  " >
+      <div class="container-fluid" style="margin-top:100px">
         <div class="col-sm-12 flex-column " >
           <form id="form" class="form-horizontal" data-th-action="${addStatus==true?'/item/save':'/item/update'}"
                 data-th-object="${item}" method="POST" enctype="multipart/form-data" >
@@ -152,12 +148,13 @@
                 </a >
                 <!--Save Button-->
                 <button class="btn btn-success ml-5" type="submit" tabindex="12" >
-                  <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span id="submit"
-                                                                                         data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+                  <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span id="submit" data-th-text="${addStatus==true?'Save': 'Update'}" >
+
+                </span >
                 </button >
                 <!--Cancel Button-->
                 <button class="btn btn-warning ml-5" type="reset" tabindex="13" >
-                  <i class="far fa-times-circle" style="font-size: 20px" ></i >&nbsp;&nbsp;Cancel
+                  <i class="far fa-times-circle" style="font-size: 20px" ></i >Cancel
                 </button >
               </div >
 
@@ -173,10 +170,6 @@
           </form >
         </div >
       </div >
-    </main >
-  </div >
-</div >
-
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
@@ -209,5 +202,5 @@
 
 
 </script >
-</div></div></body >
+</body >
 </html >

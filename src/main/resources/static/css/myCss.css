@@ -9,101 +9,73 @@
 
 /*login page start*/
 
-#loginPage {
-    background: url(../img/login.jpg)no-repeat center center fixed;
+body{
+
+    background-image: url(../img/login.png);
+    -webkit-background-size:cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
-    background-attachment: fixed;
-    top: 50%;
-
-}
-.loginback{
-    margin-left: 750px;
-    width: 500px;
-    padding: 20px;
-    margin-top:150px;
-
-
 }
 
-#loginPage h1{
+.form-area{
 
-    padding: 5px;
-    margin-left:30px;
-    color: #20B2AA;
-    text-align: justify;
-    font-size:32px;
-}
-
-#loginPage  .form-label-group {
+    float: left;
+    width: 530px;
+    height:345px;
+    margin-top:100px;
     position: relative;
+    background-color: rgba(39, 109, 93,0.55);
+    text-align: center;
+    padding:10px;
+    margin-left:490px;
+
 }
 
-#loginPage  .form-label-group input {
-    width: 100%;
-    padding: 0 20px;
+.form-area{
+
+    margin-bottom: 1px;
+    color: white;
+
+}
+input{
+
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+    width: 75%;
+    height:35px;
+    margin-bottom: 15px;
+    background-color: transparent;
+    color: #fff;
     font-size: 16px;
-    letter-spacing: 1px;
-    color: #000000;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #20B2AA;
-    outline: none;
-    background: transparent;
+    padding-left:5px;
 }
 
-#loginPage .form-label-group label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0 20px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: #20B2AA;
-    pointer-events: none;
-    transition: .5s;
+.form-area p{
+    text-align: left;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 50px;
 }
-
-#loginPage .form-label-group input:focus ~ label,
-#loginPage .form-label-group input:valid ~ label{
-    top: -18px;
-    left: 0;
-    color:#20B2AA;
-    font-size: 12px;
-}
-
-#loginPage input [type="submit"] {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #f7b200;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-
-}
-
 
 #btnLogin{
 
     display: inline-block;
     height: 40px;
-    width: 200px;
+    width: 300px;
     padding: 3px;
     line-height: 40px;
     overflow: hidden;
     position: relative;
     text-align: center;
-    font-size: 14px;
-    background-color: #1f7370;
+    font-size: 16px;
+    background-color: rgb(9, 138, 86);
     border-radius: 250px;
     color: #fff;
-    font-weight: bold;
     margin-top: 20px;
-    margin-right:100px;
     cursor: pointer;
+    margin-left: 15px;
     text-decoration: none;
     -webkit-transition:top 0.6s;
     -moz-transition:top 0.6s;
@@ -112,104 +84,19 @@
 
 
 #btnLogin:hover{
-    background-color: lightseagreen;
+    background-color: #30d0be;
 
 }
 
-.for-pass{
 
-    text-decoration: none;
-    display: block;
-    margin-top: 50px;
-    font-weight: bold;
-    font-size: 14px;
-    color: #fff;
-}
 /* login page-end */
 
-/*Nav Bar style start*/
- #body-row {
-     margin-left:0;
-     margin-right:0;
- }
-#sidebar-container {
-    min-height: 100vh;
-    background-color: #333;
-    padding: 0;
-}
-
-/* Sidebar sizes when expanded and expanded */
- .sidebar-expanded {
-     width:230px;
- }
-.sidebar-collapsed {
-    width: 60px;
-}
-
-/* Menu item*/
- #sidebar-container .list-group a {
-     height: 50px;
-     color: white;
- }
-
-/*  Submenu item*/
- #sidebar-container .list-group .sidebar-submenu a {
-     height: 45px;
-     padding-left: 30px;
- }
-.sidebar-submenu {
-    font-size: 0.9rem;
-}
-
-/* Separators */
- .sidebar-separator-title {
-     background-color: #333;
-     height: 35px;
- }
-.sidebar-separator {
-    background-color: #333;
-    height: 25px;
-}
-.logo-separator {
-    background-color: #333;
-    height:250px;
-    float: left;
-    background-image: url("../img/logo-removebg-preview.png");
-    margin-left:-150px;
-
-}
-
-/*  Closed submenu icon */
- #sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
-     content: " \f0d7";
-     font-family: FontAwesome;
-     display: inline;
-     text-align: right;
-     padding-left: 10px;
- }
-/*  Opened submenu icon */
- #sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
-     content: " \f0da";
-     font-family: FontAwesome;
-     display: inline;
-     text-align: right;
-     padding-left: 10px;
- }
-/* Nav Bar style end*/
 
 /*MainWindow Style - Start*/
-.mainbody{
-    background: url(../img/mainwindow.png)no-repeat center center fixed;
-    margin-left:230px;
-    margin-top:-650px;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-attachment: fixed;
-}
 
 .card{
+
+    background-color:rgba(4, 83, 54, 0.55);
     max-width: 18rem;
     margin-bottom:20px;
     margin-left:10px;
@@ -220,12 +107,23 @@
     width:950px;
     padding:20px;
 }
-.card-header{
+.card-header {
     font-family: Tahoma;
     font-weight: bolder;
 
 }
 
-
-
 /*MainWindow Style - End*/
+/*Form START*/
+.formborder{
+background-color: #2f604a;
+
+}
+/*Form END*/
+
+
+/* Navbar Style--START*/
+.navbar a{
+   color: white;
+}
+/* Navbar Style--END*/

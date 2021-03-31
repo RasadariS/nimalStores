@@ -6,12 +6,6 @@
 </head >
 <body class="sb-nav-fixed" >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
-<div id="layoutSidenav" >
-  <div data-th-replace="~{fragments/sideNav :: sideNavFragment}" >
-  </div >
-  <div id="layoutSidenav_content" >
-    <main >
-
       <!--heading Area-->
       <div class="container-fluid " >
         <div class="row text-center formManagement " >
@@ -103,9 +97,6 @@
     <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
     <!--script include-->
     <script data-th-replace="~{fragments/script :: scriptFragment}" ></script >
-  </div >
-</div >
-
 <script >
     /*active boostrap alert - start*/
     $(".alert").alert();

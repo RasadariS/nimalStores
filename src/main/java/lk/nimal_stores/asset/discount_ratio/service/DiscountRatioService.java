@@ -4,6 +4,7 @@ package lk.nimal_stores.asset.discount_ratio.service;
 import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.discount_ratio.dao.DiscountRatioDao;
 import lk.nimal_stores.asset.discount_ratio.entity.DiscountRatio;
+import lk.nimal_stores.asset.discount_ratio.entity.enums.DiscountRatioStatus;
 import lk.nimal_stores.util.interfaces.AbstractService;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,7 @@ private final DiscountRatioDao discountRatioDao;
     public DiscountRatio persist(DiscountRatio discountRatio) {
         if ( discountRatio.getId() == null ){
             discountRatio.setLiveDead(LiveDead.ACTIVE);
+            discountRatio.setDiscountRatioStatus(DiscountRatioStatus.ACTIVE);
         }
         return discountRatioDao.save(discountRatio);
     }

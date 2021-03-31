@@ -4,10 +4,11 @@
   <meta charset="UTF-8" >
 </head >
 <body >
-<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav >
 
 <!--Form Content - start -->
-<div class="container-fluid" style="margin:30px 30px 30px 0px;" >
+<div class="container-fluid formborder"  style="margin-top:100px">
   <div class="col-sm-12 flex-column " >
     <form id="form" class="form-horizontal" data-th-action="${addStatus==true?'/employee/save':'/employee/update'}"
           data-th-object="${employee}" method="POST" enctype="multipart/form-data" >
@@ -56,7 +57,7 @@
             </div >
             <div class="col-md-8" >
               <input id="code" data-th-field="*{code}" class="form-control" tabindex="4"
-                     type="text" required />
+                     type="text" required readonly />
               <span id="codeE" data-th-errors="*{code}"
                     data-th-if="${#fields.hasErrors('code')}" class="error" >Error Employee code
                             </span >
@@ -348,8 +349,7 @@
           <!--Button-->
           <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
             <button class="btn btn-success" type="submit" tabindex="21" >
-              <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span id="submit"
-                                                                                      data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+              <i class="fa fa-save " style="font-size: 20px" ></i ><span id="submit" data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
             </button >
             <button class="btn btn-danger" type="reset" >
               <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
@@ -402,6 +402,12 @@
             $("#image").toggle('hide');
         }
     }
+
+    //input type date can not be selected future date
+    $('[type="date"]').prop('max', function () {
+      return new Date().toJSON().split('T')[0];
+    });
 </script >
+</div>
 </body >
 </html >

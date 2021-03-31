@@ -127,6 +127,7 @@ public class SupplierItemController {
     List< SupplierItem > supplierItems = supplier.getSupplierItems();
     for ( SupplierItem supplierItem : supplierItems ) {
       SupplierItem supplierItemOne = new SupplierItem();
+      supplierItemOne.setItemSupplierStatus(supplierItem.getItemSupplierStatus());
       if ( supplierItem.getId() != null ) {
         supplierItemOne.setId(supplierItem.getId());
       }
@@ -139,7 +140,6 @@ public class SupplierItemController {
     }
     return "redirect:/supplier";
   }
-
 
   @GetMapping( value = "/supplierItem", params = {"supplierId", "itemId"} )
   @ResponseBody

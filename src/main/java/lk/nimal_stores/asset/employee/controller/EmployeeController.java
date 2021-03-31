@@ -126,7 +126,6 @@ public class EmployeeController {
       model.addAttribute("employee", employee);
       return commonThings(model);
     }
-
     employee.setMobileOne(makeAutoGenerateNumberService.phoneNumberLengthValidator(employee.getMobileOne()));
     employee.setMobileTwo(makeAutoGenerateNumberService.phoneNumberLengthValidator(employee.getMobileTwo()));
     employee.setLand(makeAutoGenerateNumberService.phoneNumberLengthValidator(employee.getLand()));
@@ -139,7 +138,6 @@ public class EmployeeController {
         employee.setCode("SSCE" + makeAutoGenerateNumberService.numberAutoGen(lastEmployee.getCode().substring(4)).toString());
       }
     }
-
 
     //after save employee files and save employee
     Employee employeeSaved = employeeService.persist(employee);

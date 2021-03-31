@@ -6,14 +6,9 @@
 </head >
 <body class="sb-nav-fixed" >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
-<div id="layoutSidenav" >
-  <div data-th-replace="~{fragments/sideNav :: sideNavFragment}" >
-  </div >
-  <div id="layoutSidenav_content" >
-    <main >
 
       <!--Form Content-->
-      <div class="col-sm-12 flex-column " >
+      <div class="col-sm-12 flex-column "  style="margin-top:100px" >
         <form id="form" class="form-horizontal" data-th-action="${addStatus==true?'/customer/save':'/customer/update'}"
               data-th-object="${customer}" method="POST" enctype="multipart/form-data" >
           <div class="row" >
@@ -167,8 +162,7 @@
               </a >
               <!--Save Button-->
               <button class="btn btn-success ml-5" type="submit" tabindex="8" >
-                <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span id="submit"
-                                                                                       data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+                <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span id="submit" data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
               </button >
               <!--Cancel Button-->
               <button class="btn btn-warning ml-5" type="reset" tabindex="9" >
@@ -189,7 +183,6 @@
     <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
     <!--script include-->
     <script data-th-replace="~{fragments/script :: scriptFragment}" ></script >
-  </div >
 </div >
 </body >
 </html >

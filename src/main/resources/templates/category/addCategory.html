@@ -5,13 +5,8 @@
   <title >addCategory</title >
 </head >
 <body class="sb-nav-fixed" >
-<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
-<div id="layoutSidenav" >
-  <div data-th-replace="~{fragments/sideNav :: sideNavFragment}" >
-  </div >
-  <div id="layoutSidenav_content" >
-    <main >
 
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
       <!--Form Content-->
       <div class="col-sm-12 flex-column " >
         <form id="form" class="form-horizontal" data-th-action="${addStatus==true?'/category/add':'/category/update'}"
@@ -105,11 +100,11 @@
           </div >
         </form >
       </div >
-    </main >
+
     <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
     <!--script include-->
     <script data-th-replace="~{fragments/script :: scriptFragment}" ></script >
-  </div >
+
 </div >
 </body >
 </html >

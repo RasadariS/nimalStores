@@ -6,7 +6,10 @@ import lk.nimal_stores.asset.user_management.user_session_log.entity.UserSession
 import lk.nimal_stores.asset.user_management.user_session_log.entity.enums.UserSessionLogStatus;
 import lk.nimal_stores.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.*;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,13 +25,13 @@ public class UserSessionLogService implements AbstractService<UserSessionLog, In
     }
 
     @Override
-    @Cacheable
+
     public List< UserSessionLog > findAll() {
         return userSessionLogDao.findAll();
     }
 
     @Override
-    @Cacheable
+
     public UserSessionLog findById(Integer id) {
         return userSessionLogDao.getOne(id);
     }
@@ -56,7 +59,7 @@ public class UserSessionLogService implements AbstractService<UserSessionLog, In
         return null;
     }
 
-    @Cacheable
+
     public UserSessionLog findByUserAndUserSessionLogStatus(User user, UserSessionLogStatus userSessionLogStatus) {
         return userSessionLogDao.findByUserAndUserSessionLogStatus(user, userSessionLogStatus);
     }

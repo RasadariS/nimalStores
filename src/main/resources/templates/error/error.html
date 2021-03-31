@@ -6,12 +6,7 @@
 </head >
 <body class="sb-nav-fixed" >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
-<div id="layoutSidenav" >
-  <div data-th-replace="~{fragments/sideNav :: sideNavFragment}" >
-  </div >
-  <div id="layoutSidenav_content" >
-    <main >
-      <main >
+
         <div class="col-12 col-sm-12 col-md-12 mt-4" >
           <div class="container-fluid"
                data-th-with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}" >
@@ -45,7 +40,6 @@
     <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
     <!--script include-->
     <script data-th-replace="~{fragments/script :: scriptFragment}" ></script >
-  </div >
 </div >
 </body >
 </html >

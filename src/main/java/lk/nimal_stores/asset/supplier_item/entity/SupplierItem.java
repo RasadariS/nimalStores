@@ -1,7 +1,6 @@
 package lk.nimal_stores.asset.supplier_item.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.item.entity.Item;
 import lk.nimal_stores.asset.supplier.entity.Supplier;
 import lk.nimal_stores.asset.supplier_item.entity.enums.ItemSupplierStatus;
@@ -28,8 +27,6 @@ public class SupplierItem extends AuditEntity {
   @Enumerated( EnumType.STRING )
   private ItemSupplierStatus itemSupplierStatus;
 
-  @Enumerated( EnumType.STRING )
-  private LiveDead liveDead;
 
   @ManyToOne( cascade = CascadeType.MERGE )
   private Item item;

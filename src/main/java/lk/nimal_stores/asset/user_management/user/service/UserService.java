@@ -7,7 +7,6 @@ import lk.nimal_stores.asset.user_management.user.dao.UserDao;
 import lk.nimal_stores.asset.user_management.user.entity.User;
 import lk.nimal_stores.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.*;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@CacheConfig( cacheNames = {"user"} ) // tells Spring where to store cache for this class
 public class UserService implements AbstractService< User, Integer > {
   private final UserDao userDao;
   private final PasswordEncoder passwordEncoder;
@@ -29,22 +27,18 @@ public class UserService implements AbstractService< User, Integer > {
     this.userDao = userDao;
   }
 
-  @Cacheable
+
   public List< User > findAll() {
     return userDao.findAll().stream()
         .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
         .collect(Collectors.toList());
   }
 
-  @Cacheable
-  @Transactional
   public User findById(Integer id) {
     return userDao.getOne(id);
   }
 
-  @Caching( evict = {@CacheEvict( value = "user", allEntries = true )},
-      put = {@CachePut( value = "user", key = "#user.id" )} )
-  @Transactional
+
   public User persist(User user) {
     user.setUsername(user.getUsername().toLowerCase());
     if ( user.getPassword() != null ) {
@@ -58,7 +52,7 @@ public class UserService implements AbstractService< User, Integer > {
     return userDao.save(user);
   }
 
-  @CacheEvict( allEntries = true )
+
   public boolean delete(Integer id) {
     //according to this project can not be deleted user
     User user = userDao.getOne(id);
@@ -67,7 +61,7 @@ public class UserService implements AbstractService< User, Integer > {
     return false;
   }
 
-  @Cacheable
+
   public List< User > search(User user) {
     ExampleMatcher matcher =
         ExampleMatcher.matching().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
@@ -75,23 +69,23 @@ public class UserService implements AbstractService< User, Integer > {
     return userDao.findAll(userExample);
   }
 
-  @Cacheable
+
   public Integer findByUserIdByUserName(String userName) {
     return userDao.findUserIdByUserName(userName);
   }
 
-  @Cacheable
+
   @Transactional( readOnly = true )
   public User findByUserName(String name) {
     return userDao.findByUsername(name);
   }
 
-  @Cacheable
+
   public User findUserByEmployee(Employee employee) {
     return userDao.findByEmployee(employee);
   }
 
-  @Cacheable
+
   public boolean findByEmployee(Employee employee) {
     return userDao.findByEmployee(employee) == null;
   }

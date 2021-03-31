@@ -1,51 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head  >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
-    <link  data-th-href="@{/css/myCss.css}" media="all" rel="stylesheet" type="text/css"/>
 
+    <!--style sheet ekak link karanne mehemai-->
+    <link rel="stylesheet" data-th-href="@{/css/myCss.css}">
 </head>
-<body id="loginPage">
-<div class="col full-height loginback" >
-    <h1>Login Here</h1>
+<body>
 
-    <div class="col-sm-8">
-        <form  data-th-action="${'/login'}" method="post">
-            <br/>
-            <fieldset>
-                <div class="form-label-group">
-                    <input type="text" id="username" data-th-name="${'username'}" class="form-control" placeholder="username"
-                           required>
-                    <label for="username">Username</label>
-                </div>
-                <div class="form-label-group">
-                    <input type="password" id="inputPassword" data-th-name="${'password'}" class="form-control"
-                           placeholder="password"
-                           required>
-                    <label for="inputPassword">Password</label>
-                </div>
-                <div class="form-group text-right">
-                    <button class="btn btn-primary " type="submit" id="btnLogin">LOGIN</button>
-                </div>
-            </fieldset>
-            <div class="container-fluid "  data-th-if="${param.error}">
+<div class="form-area">
+    <form th:action="${'/login'}" method="post">
+    <h2>Samarasinghe Super</h2>
+
+    <p> User Name :</p>
+    <input type="text" name="username" id="username" th:name="${'username'}" placeholder="Enter User Name" required>
+
+    <p>Password :</p>
+    <input type="password" id="inputPassword" th:name="${'password'}" placeholder="Enter Password" required>
+
+    <div style="margin-top:10px">
+        <button id="btnLogin" class="col-md-12 btn btn-primary"><i class= "fa fa-key" style="margin-right: 10px;font-size: 18px"></i>Login</button>
+    </div>
+
+<div class="container-fluid " th:if="${param.error}">
                 <p class="bg-white text-capitalize text-danger text-lg-center">Invalid username or password. </p>
             </div>
             <div class="container-fluid ">
-                <p id="errorMessage"  data-th-text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
+                <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
             </div>
         </form>
-    </div>
-
 </div>
 
-<div   data-th-replace="~{fragments/footer :: footerFragment}"></div>
+<!--footer include-->
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
 <!--script include-->
-<script  data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
 
 </body>
 </html>
-
-
-
