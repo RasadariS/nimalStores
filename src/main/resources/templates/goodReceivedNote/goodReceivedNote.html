@@ -50,8 +50,10 @@
               <th >
                 <a data-th-href="${'/purchaseOrder/view/' + purchaseOrder.id}"
                    class="btn btn-primary btn-sm" ><i class="fa fa-folder-open" style="font-size: 15px" ></i >&nbsp;View</a >
+
                 <a data-th-href="${'/goodReceivedNote/' + purchaseOrder.id}" class="btn btn-success btn-sm" ><i
                       class="fa fa-edit" style="font-size: 15px" ></i >&nbsp; Confirm </a >
+
                 <a data-th-href="${'/purchaseOrder/delete/' + purchaseOrder.id}" class="btn btn-danger btn-sm" >
                   <!--data-th-if="${#authorization.expurchaseOrderession('hasRole(''ROLE_ADMIN'')')}"--><i
                       class="fa fa-trash" style="font-size: 15px" ></i > Delete</a >

@@ -60,7 +60,9 @@ public class PurchaseOrderService implements AbstractService< PurchaseOrder, Int
     }
 
     public List< PurchaseOrder > findByPurchaseOrderStatus(PurchaseOrderStatus purchaseOrderStatus) {
-        return purchaseOrderDao.findByPurchaseOrderStatus(purchaseOrderStatus);
+        List<PurchaseOrder> purchaseOrderLIst = purchaseOrderDao.findByPurchaseOrderStatus(purchaseOrderStatus);
+        System.out.println("dsdds   "+purchaseOrderLIst.size());
+        return purchaseOrderLIst;
     }
 
 

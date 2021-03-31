@@ -24,7 +24,6 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/purchaseOrder")
@@ -40,15 +39,15 @@ public class PurchaseOrderController {
 
     public PurchaseOrderController(PurchaseOrderService purchaseOrderService,
                                    PurchaseOrderItemService purchaseOrderItemService, SupplierService supplierService
-            , CommonService commonService, ItemService itemService,MakeAutoGenerateNumberService makeAutoGenerateNumberService,
+            , CommonService commonService, ItemService itemService, MakeAutoGenerateNumberService makeAutoGenerateNumberService,
                                    EmailService emailService,
                                    TwilioMessageService twilioMessageService) {
         this.purchaseOrderService = purchaseOrderService;
-      this.purchaseOrderItemService = purchaseOrderItemService;
-      this.supplierService = supplierService;
+        this.purchaseOrderItemService = purchaseOrderItemService;
+        this.supplierService = supplierService;
         this.commonService = commonService;
-      this.itemService = itemService;
-      this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
+        this.itemService = itemService;
+        this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
         this.emailService = emailService;
         this.twilioMessageService = twilioMessageService;
     }
@@ -112,8 +111,8 @@ public class PurchaseOrderController {
         if (purchaseOrderSaved.getSupplier().getEmail() != null) {
             StringBuilder message = new StringBuilder("Item Name\t\t\t\t\tQuantity\t\t\tItem Price\t\t\tTotal(Rs)\n");
             for (int i = 0; i < purchaseOrder.getPurchaseOrderItems().size(); i++) {
-              Item item = itemService.findById(purchaseOrder.getPurchaseOrderItems().get(i).getItem().getId());
-              PurchaseOrderItem purchaseOrderItem = purchaseOrderItemService.findById(purchaseOrderSaved.getPurchaseOrderItems().get(i).getId());
+                Item item = itemService.findById(purchaseOrder.getPurchaseOrderItems().get(i).getItem().getId());
+                PurchaseOrderItem purchaseOrderItem = purchaseOrderItemService.findById(purchaseOrderSaved.getPurchaseOrderItems().get(i).getId());
                 message
                         .append(item.getName())
                         .append("\t\t\t\t\t")
@@ -128,8 +127,8 @@ public class PurchaseOrderController {
                     "Requesting Items According To PO Code " + purchaseOrder.getCode(), message.toString());
             if (purchaseOrderSaved.getSupplier().getContactOne() != null) {
                 try {
-                  String mobileNumber = purchaseOrderSaved.getSupplier().getContactOne().substring(1,10);
-                    twilioMessageService.sendSMS("+94"+mobileNumber, "There is immediate PO from " +
+                    String mobileNumber = purchaseOrderSaved.getSupplier().getContactOne().substring(1, 10);
+                    twilioMessageService.sendSMS("+94" + mobileNumber, "There is immediate PO from " +
                             "Samarasingher Super \nPlease Check Your Email Form Further Details");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -141,10 +140,7 @@ public class PurchaseOrderController {
 
     @GetMapping("/all")
     public String findAll(Model model) {
-        model.addAttribute("purchaseOrders", purchaseOrderService.findAll()
-                .stream()
-                .filter(x -> x.getPurchaseOrderStatus().equals(PurchaseOrderStatus.NOT_COMPLETED))
-                .collect(Collectors.toList()));
+        model.addAttribute("purchaseOrders", purchaseOrderService.findByPurchaseOrderStatus(PurchaseOrderStatus.NOT_COMPLETED));
         model.addAttribute("heading", "Pending Purchase Order");
         model.addAttribute("grnStatus", true);
         return "purchaseOrder/purchaseOrder";
