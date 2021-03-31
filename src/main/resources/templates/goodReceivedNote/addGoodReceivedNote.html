@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
 </head>
-<body>
-<!--/* Nav bar is included */-->
-<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
+<body class="sb-nav-fixed" >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 <a aria-controls="hrefCollapse" aria-expanded="false" class="btn btn-primary col-12" data-toggle="collapse"
    href="#hrefCollapse">Show Purchase Order Detail's - Purchase Order Code :
     <span data-th-text="${purchaseOrderDetail.code}"></span></a>
@@ -31,34 +30,34 @@
                 <tbody>
                 <tr data-th-each="purchaseOrderItem, index : ${purchaseOrderDetail.purchaseOrderItems}">
                     <td>
-                        <input type="text" class="form-control text-center" data-th-value="${index.count}" readonly>
+                        <input type="text" class="form-control text-center" data-th-value="${index.count}" readonly required>
                     </td>
                     <td>
                         <input type="text" class="form-control" data-th-value="${purchaseOrderItem.item.name}"
-                               readonly>
+                               readonly required>
                         <!--item id-->
                         <input type="text" class="form-control" data-th-name="${'ledgers[__${index.index}__].item.id'}"
                                data-th-value="${purchaseOrderItem.item.id}"
-                               hidden>
+                               hidden required>
                     </td>
                     <td>
                         <input type="text" class="form-control text-center"
                                data-th-value="${purchaseOrderItem.quantity}"
                                data-th-name="${'ledgers[__${index.index}__].quantity'}"
-                               readonly>
+                               readonly required>
                         <!--sell price-->
                         <input type="text" class="form-control"
                                data-th-name="${'ledgers[__${index.index}__].sellPrice'}"
                                data-th-value="${purchaseOrderItem.item.sellPrice}"
-                               hidden>
+                               hidden required>
                     </td>
                     <td>
-                        <input type="date" class="form-control " onchange="dateMatch(this)"
-                               data-th-name="${'ledgers[__${index.index}__].manufactureDate'}" data-th-id="${'md'+index.count}">
+                        <input type="date" class="form-control mdate" onchange="dateMatch(this)"
+                               data-th-name="${'ledgers[__${index.index}__].manufactureDate'}" data-th-id="${'md'+index.count}" required>
                     </td>
                     <td>
-                        <input type="date" class="form-control " onchange="dateMatch(this)"
-                               data-th-name="${'ledgers[__${index.index}__].expiredDate'}" data-th-id="${'ed'+index.count}">
+                        <input type="date" class="form-control expdate" onchange="dateMatch(this)"
+                               data-th-name="${'ledgers[__${index.index}__].expiredDate'}" data-th-id="${'ed'+index.count}" required>
                     </td>
                 </tr>
                 </tbody>
@@ -90,12 +89,12 @@
         </div>
     </form>
 </div>
-
+        </main>
 <!--/* footer is */-->
 <footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
 <!--/* script is included */-->
 <script data-th-replace="~{fragments/script :: scriptFragment}"></script>
-
+</div>
 <script>
     function dateMatch(obj) {
         let selectedFiledId = obj.getAttribute('id').slice(2);
@@ -114,6 +113,24 @@
         }
     }
 
+    $(document).ready(function (){
+
+        //input type date can not be selected future date
+        $('.mdate').prop('max', function () {
+            return new Date().toJSON().split('T')[0];
+        });
+
+    })
+
+
+    $(document).ready(function (){
+
+        //input type date can not be selected future date
+        $('.expdate').prop('min', function () {
+            return new Date().toJSON().split('T')[0];
+        });
+
+    })
 
 </script>
 

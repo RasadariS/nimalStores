@@ -4,42 +4,41 @@
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
 </head>
-<body>
-<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
-
-<div class="container-fluid bg-secondary form-Border">
-    <div class="row text-center formManagement border-info">
-        <div class="col">
-            <a class="btn btn-primary" href="/home">
-                <i class="fa fa-home" style="font-size: 20px"></i> &nbsp; Home
-            </a>
-        </div>
-        <div class="col">
-            <h4 class="text-light text-center">
-                <strong>
-                    <span
-                            data-th-text="${addStatus==true?'New Discount Ratio Add':'Update Discount Ratio Details'}"></span>
-                </strong>
-            </h4>
-        </div>
-        <div class="col">
-            <a class="btn btn-primary" href="/discountRatio">
-                <i class="fa fa-list"></i>&nbsp; View List
-            </a>
-        </div>
-    </div>
-</div>
+<body class="sb-nav-fixed" >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 <!--Form Content - start -->
-<div class="container-fluid bg-dark formBorder">
-    <div class="col-sm-12 flex-column ">
+    <div class="col-sm-12 flex-column " style="margin-top:100px">
         <form data-th-action="${addStatus==true?'/discountRatio/save':'/discountRatio/update'}"
               data-th-object="${discountRatio}"
               method="POST">
             <div class="row">
+                <div class="container-fluid bg-secondary form-Border">
+                    <div class="row text-center formManagement border-info">
+                        <div class="col">
+                            <a class="btn btn-success" href="/home">
+                                <i class="fa fa-home" style="font-size: 20px"></i> &nbsp; Home
+                            </a>
+                        </div>
+                        <div class="col">
+                            <h4 class="text-light text-center">
+                                <strong>
+                    <span
+                            data-th-text="${addStatus==true?'New Discount Ratio Add':'Update Discount Ratio Details'}"></span>
+                                </strong>
+                            </h4>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-success" href="/discountRatio">
+                                <i class="fa fa-list"></i>&nbsp; View List
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!--Left Side-->
                 <div class="form-group col-md-6 col-sm-6 text-left flex-column">
                     <input data-th-field="*{id}" data-th-if="${addStatus==false}" hidden type="text"/>
-
+                    <input type="text" data-th-if="${addStatus==false}" data-th-field="*{liveDead}" hidden>
                     <!--Name-->
                     <div class="form-row text-right">
                         <div class="col-md-4">
@@ -60,7 +59,7 @@
                         </div>
                         <div class="col-md-8">
                             <input class="form-control" data-th-field="*{amount}" id="amount" required tabindex="4"
-                                   type="text"/>
+                                   type="number"/>
                             <span class="error" data-th-errors="*{amount}"
                                   data-th-if="${#fields.hasErrors('amount')}" >Error Name</span>
                         </div>
@@ -101,11 +100,10 @@
             </div>
         </form>
     </div>
-</div>
-<!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+        </main>
+<div  data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
-
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
+</div>
 </body>
 </html>
