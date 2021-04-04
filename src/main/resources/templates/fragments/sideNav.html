@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head >
+  <title ></title >
+</head >
+<body >
+<div id="layoutSidenav_nav" data-th-fragment="sideNavFragment" >
+  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" >
+    <div class="sb-sidenav-menu" >
+      <div class="nav" >
+        <div class="sb-sidenav-menu-heading">Samarasinghe Super</div >
+        <a class="nav-link" href="/home" >
+          <div class="sb-nav-link-icon" ><i class="fa fa-home" ></i ></div >
+          Home
+        </a >
+
+
+        <!--Login logout-->
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapselogin"
+           aria-expanded="false" aria-controls="collapselogin" >
+          <div class="sb-nav-link-icon" ><i class="fas fa-columns" ></i ></div >
+          Profile
+          <div class="sb-sidenav-collapse-arrow" ><i class="fas fa-angle-down" ></i ></div >
+        </a >
+        <div class="collapse" id="collapselogin" aria-labelledby="headingOne" data-parent="#sidenavAccordion" >
+          <nav class="sb-sidenav-menu-nested nav" >
+            <a class="nav-link" data-th-href="${'/profile'}" >Profile</a >
+            <a class="nav-link" data-th-href="${'/passwordChange'}" >Change Password</a >
+            <a class="nav-link" href="/logout" >Log Out</a >
+
+          </nav >
+        </div >
+
+
+        <!--Sales & Debtors-->
+
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventory"
+           aria-expanded="false" aria-controls="collapseInventory" >
+          <div class="sb-nav-link-icon" ><i class="fas fa-columns" ></i ></div >
+          Inventory
+          <div class="sb-sidenav-collapse-arrow" ><i class="fas fa-angle-down" ></i ></div >
+        </a >
+        <div class="collapse" id="collapseInventory" aria-labelledby="headingOne" data-parent="#sidenavAccordion" >
+          <nav class="sb-sidenav-menu-nested nav" >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER' ,'ROLE_CASHIER')"
+               class="nav-link" href="/item" >Item</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER')" class="nav-link"
+               href="/category" >Category</a >
+
+          </nav >
+        </div >
+
+
+
+        <!--Purchase and Supplies-->
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchase"
+           aria-expanded="false" aria-controls="collapsePurchase" >
+          <div class="sb-nav-link-icon" ><i class="fas fa-columns" ></i ></div >
+          Purchase & Supplies
+          <div class="sb-sidenav-collapse-arrow" ><i class="fas fa-angle-down" ></i ></div >
+        </a >
+        <div class="collapse" id="collapsePurchase" aria-labelledby="headingOne" data-parent="#sidenavAccordion" >
+          <nav class="sb-sidenav-menu-nested nav" >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER')" class="nav-link"
+               href="/purchaseOrder" >Purchase Order</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER')" class="nav-link"
+               href="/goodReceivedNote" >GRN</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_ACCOUNT_MANAGER')" class="nav-link"
+               href="/payment" >Payment</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER' , 'ROLE_CASHIER')"
+               class="nav-link" href="/ledger" >Ledger</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER')" class="nav-link"
+               href="/supplier" >Supplier</a >
+
+          </nav >
+        </div >
+        <!--Inventory-->
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventory"
+           aria-expanded="false" aria-controls="collapseInventory" >
+          <div class="sb-nav-link-icon" ><i class="fas fa-columns" ></i ></div >
+          Inventory
+          <div class="sb-sidenav-collapse-arrow" ><i class="fas fa-angle-down" ></i ></div >
+        </a >
+        <div class="collapse" id="collapseInventory" aria-labelledby="headingOne" data-parent="#sidenavAccordion" >
+          <nav class="sb-sidenav-menu-nested nav" >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER' ,'ROLE_CASHIER')"
+               class="nav-link" href="/item" >Item</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER')" class="nav-link"
+               href="/category" >Category</a >
+
+          </nav >
+        </div >
+        <!--Administration-->
+        <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_HR_MANAGER' , 'ROLE_ADMIN')"
+           class="nav-link collapsed" href="#" data-toggle="collapse"
+           data-target="#collapseAdmin" aria-expanded="false" aria-controls="collapseAdmin" >
+          <div class="sb-nav-link-icon" ><i class="fas fa-columns" ></i ></div >
+          Administration
+          <div class="sb-sidenav-collapse-arrow" ><i class="fas fa-angle-down" ></i ></div >
+        </a >
+        <div class="collapse" id="collapseAdmin" aria-labelledby="headingOne" data-parent="#sidenavAccordion" >
+          <nav class="sb-sidenav-menu-nested nav" >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_HR_MANAGER' , 'ROLE_ADMIN')" class="nav-link"
+               href="/employee" >Employee</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_HR_MANAGER' , 'ROLE_ADMIN')" class="nav-link"
+               href="/role" >Role</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_HR_MANAGER' , 'ROLE_ADMIN')" class="nav-link"
+               href="/user" >User</a >
+          </nav >
+        </div >
+        <div class="sb-sidenav-menu-heading" >Report</div >
+        <!--Reports-->
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport"
+           aria-expanded="false" aria-controls="collapseReport" >
+          <div class="sb-nav-link-icon" ><i class="fas fa-table" ></i ></div >
+          Report
+          <div class="sb-sidenav-collapse-arrow" ><i class="fas fa-angle-down" ></i ></div >
+        </a >
+        <div class="collapse" id="collapseReport" aria-labelledby="headingOne" data-parent="#sidenavAccordion" >
+          <nav class="sb-sidenav-menu-nested nav" >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER')" data-th-href="@{'/report/manager'}"
+               class="nav-link" > Manager Report</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER' , 'ROLE_CASHIER')"
+               data-th-href="@{'/ledger'}" class="nav-link" > All Items Report</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_CASHIER')" data-th-href="@{'/report/cashier'}"
+               class="nav-link" > Cashier Daily Report</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER' )"
+               data-th-href="@{'/report/payment'}" class="nav-link" > Payment Daily Report</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER' )"
+               data-th-href="@{'/report/perCashier'}" class="nav-link" > Per Cashier Report</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER' )"
+               data-th-href="@{'/report/perAccount'}" class="nav-link" > Per Account Department User Report</a >
+            <a data-sec-authorize="hasAnyAuthority('ROLE_MANAGER', 'ROLE_PROCUREMENT_MANAGER' )"
+               data-th-href="@{'/report/perItem'}" class="nav-link" > Per Item Report</a >
+
+          </nav >
+        </div >
+      </div >
+    </div >
+
+  </nav >
+</div >
+</div></div></body >
+</html >
+
