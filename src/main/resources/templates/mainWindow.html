@@ -1,79 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head data-th-replace="~{fragments/header :: headerFragment}">
+    <link data-th-href="@{/css/style.css}" rel="stylesheet">
 </head>
 
 <body class="sb-nav-fixed">
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
-</div >
-<div class="container-fluid mainbody">
-    <div class="row cardrow">
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header">Customer</div>
-                <div class="card-body">
-                    <img src="../img/customer.png" style="width:200px; ">
+<!--<nav data-th-replace="~{fragments/sideNav :: sideNavFragment}"></nav>-->
+ <body background="/img/mainwindow.jpg"/>
+
+<main>
+    <div class="container-fluid"><br>
+<!--        <h1 class="mt-4">Dashboard</h1>-->
+<!--        <ol class="breadcrumb mb-4">-->
+<!--            <li class="breadcrumb-item active">Dashboard</li>-->
+<!--        </ol>-->
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body"><h2>PRODUCTS</h2></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
                 </div>
             </div>
-
-        </div>
-
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header">Employee</div>
-                <div class="card-body">
-                    <img src="../img/employee.png" style="width:220px; ">
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-warning text-white mb-4">
+                    <div class="card-body"><h2>INVOICES</h2></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header">Supplier</div>
-                <div class="card-body">
-                    <img src="../img/supplier2.png" style="width:130px;margin-left:50px">
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body"><h2>CUSTOMERS</h2></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-    </div>
-
-    <div class="row cardrow">
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header">Payment</div>
-                <div class="card-body">
-                    <img src="../img/payment.png" style="width:188px; ">
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header">Purchase Order</div>
-                <div class="card-body">
-                    <img src="../img/porder.png" style="width:200px;">
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body"><h2>AMOUNT</h2></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-4">
-
-            <div class="card">
-                <div class="card-header">Item</div>
-                <div class="card-body">
-                    <img src="../img/item.png" style="width:190px; ">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header"><i class="fas fa-chart-pie mr-1"></i>Daily Sales Analysis</div>
+                    <div class="card-body"><canvas id="myPieChart" width="100%" height="40"></canvas></div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Monthly Sales Analysis</div>
+                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                 </div>
             </div>
         </div>
 
+</main>
 
-    </div>
-</div>
 
 <!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
+
+<script type="text/javascript" src="js/fa-chart-area-demo.js"></script>
+<script type="text/javascript" src="js/chart-pie-demo.js"></script>
+<script type="text/javascript" src="js/chart-bar-demo.js"></script>
 
 </body>
 </html>

@@ -216,6 +216,7 @@ input::-webkit-input-placeholder {
   height: 100%;
   width: 100%; }
 
+
 .full-bg {
   background-image: url("../img/bg_2.jpg");
   background-size: cover;
@@ -315,5 +316,6 @@ input::-webkit-input-placeholder {
     margin-bottom: 10px; }
     .login-box .no-c a {
       text-decoration: underline; }
+
 
 /*# sourceMappingURL=style.css.map */
