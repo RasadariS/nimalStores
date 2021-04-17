@@ -137,6 +137,16 @@ public class EmployeeController {
       } else {
         employee.setCode("SSCE" + makeAutoGenerateNumberService.numberAutoGen(lastEmployee.getCode().substring(4)).toString());
       }
+
+      Employee employeeNic = null;
+      if ( employee.getNic() != null && employee.getId() == null ) {
+        employeeNic = employeeService.findByNic(employee.getNic());
+      }
+      if ( employeeNic != null ) {
+        ObjectError error = new ObjectError("employee",
+                "There is employee on same nic number . <br> System message -->");
+        result.addError(error);
+      }
     }
 
     //after save employee files and save employee
