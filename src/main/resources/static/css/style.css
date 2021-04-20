@@ -149,10 +149,10 @@ body {
       color: #444; }
 
 .btn-success {
-  background-color: #00ab9f;
+  background-color: #28a745;
   border-color: #00ab9f; }
   .btn-success:hover {
-    background-color: #00ab9f !important;
+    background-color: #0aa361 !important;
     border-color: #00ab9f !important; }
   .btn-success:active {
     background-color: #00ab9f !important;
@@ -185,7 +185,7 @@ body {
   border: 2px solid  #00a8df; }
 
 .btn-light {
-  background-color: #FFF;
+  background-color: #17a2b8;
   color: #3F3F3F; }
 
 .collapse.show {
@@ -216,6 +216,10 @@ input::-webkit-input-placeholder {
   height: 100%;
   width: 100%; }
 
+body image {
+  background-image: url("../img/formbg.jpg");
+  background-size: cover;
+  }
 
 .full-bg {
   background-image: url("../img/bg_2.jpg");
