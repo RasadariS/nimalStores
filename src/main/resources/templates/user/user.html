@@ -2,7 +2,7 @@
 <html lang="en" >
 <head  data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
-    <title>Samarasinghe Super</title>
+    <title>user</title>
 </head>
 <body>
 <nav  data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
@@ -14,7 +14,8 @@
                 <i class="fa fa-user-plus" style="font-size: 18px;"></i> &nbsp; Add User </a>
         </div>
         <div class="col">
-            <h2 class="text-light text-center">
+            <br>
+            <h2 class="text-danger text-center">
                 <strong>
                     User Management
                 </strong>
@@ -29,7 +30,7 @@
 </div>
 <div class="container-fluid  ">
     <div class="col-sm-12 flex-column ">
-        <div class="row" id="userListTable"  data-th-if="${! #lists.isEmpty(users)}">
+        <div class="col" id="userListTable"  data-th-if="${! #lists.isEmpty(users)}">
             <div class="col-sm-12">
                 <table class="table table-hover table-striped" id="myTable">
                     <thead class="thead-inverse">

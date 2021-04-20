@@ -2,6 +2,7 @@
 <html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
+  <title>addEmployee</title>
 </head >
 <body >
 
@@ -25,15 +26,18 @@
               <a href="/employee" class="btn btn-success" >
                 View Employees
               </a >
+
             </div >
           </div >
+          <br>
           <div class="row text-center" >
             <div class="col" >
-              <h4 class="text-light text-center" >
+              <h4 class="text-danger text-center" >
                 <strong >
                   <span data-th-text="${addStatus==true?'New Employee':'Update Employee Details'}" ></span >
                 </strong >
               </h4 >
+              <br>
             </div >
           </div >
         </div >

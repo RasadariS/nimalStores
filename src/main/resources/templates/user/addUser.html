@@ -2,14 +2,14 @@
 <html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
-  <title >Samarasinghe Super </title >
+  <title >addUser</title >
 </head >
 <body >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 <!--Employee find-->
 <div class="container-fluid " id="employeeFindForm" data-th-if="${employeeDetailShow==false}" >
   <div class="col-sm-12 flex-column " >
-    <form id="form" method="POST" data-th-action="${'/user/workingPlace'}" data-th-object="${employee}"
+    <form id="form" method="POST" data-th-action="${'/user/addUser'}" data-th-object="${employee}"
           enctype="multipart/form-data" >
       <div class="form-row" >
         <div class="container-fluid " >
@@ -22,8 +22,7 @@
             <div class="col" >
               <h4 class="text-light text-center" >
                 <strong >
-                                                <span id="formHeader"
-                                                      data-th-text="${addStatus==true?'New User':'Update User'}" ></span >
+                    <span id="formHeader" data-th-text="${addStatus==true?'New User':'Update User'}" ></span >
                 </strong >
               </h4 >
             </div >
