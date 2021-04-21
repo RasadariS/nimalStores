@@ -142,13 +142,13 @@ public class InvoiceController {
     }
     if ( saveInvoice.getCustomer() != null ) {
       try {
-        String mobileNumber = saveInvoice.getCustomer().getMobile().substring(1,10);
-        twilioMessageService.sendSMS("+94"+mobileNumber, "Thank You Come Again \n Samarasinghe Super ");
+        String mobileNumber = saveInvoice.getCustomer().getMobile().substring(1, 10);
+        twilioMessageService.sendSMS("+94" + mobileNumber, "Thank You Come Again \n Samarasinghe Super ");
       } catch ( Exception e ) {
         e.printStackTrace();
       }
     }
-    return "redirect:/invoice/fileView/"+saveInvoice.getId();
+    return "redirect:/invoice/fileView/" + saveInvoice.getId();
   }
 
 
@@ -160,8 +160,8 @@ public class InvoiceController {
     return "redirect:/invoice";
   }
 
-  @GetMapping(value = "/file/{id}", produces = MediaType.APPLICATION_PDF_VALUE)
-  public ResponseEntity< InputStreamResource > invoicePrint(@PathVariable("id")Integer id) throws DocumentException {
+  @GetMapping( value = "/file/{id}", produces = MediaType.APPLICATION_PDF_VALUE )
+  public ResponseEntity< InputStreamResource > invoicePrint(@PathVariable( "id" ) Integer id) throws DocumentException {
     var headers = new HttpHeaders();
     headers.add("Content-Disposition", "inline; filename=invoice.pdf");
     InputStreamResource pdfFile = new InputStreamResource(invoiceService.createPDF(id));
@@ -173,15 +173,16 @@ public class InvoiceController {
         .body(pdfFile);
   }
 
-  @GetMapping("/fileView/{id}")
-  public String fileRequest(@PathVariable("id") Integer id, Model model, HttpServletRequest request) {
-    model.addAttribute("pdfFile",MvcUriComponentsBuilder
+  @GetMapping( "/fileView/{id}" )
+  public String fileRequest(@PathVariable( "id" ) Integer id, Model model, HttpServletRequest request) {
+    model.addAttribute("pdfFile", MvcUriComponentsBuilder
         .fromMethodName(InvoiceController.class, "invoicePrint", id)
         .toUriString());
-    model.addAttribute("redirectUrl",MvcUriComponentsBuilder
-        .fromMethodName(InvoiceController.class, "getInvoiceForm")
+    model.addAttribute("redirectUrl", MvcUriComponentsBuilder
+        .fromMethodName(InvoiceController.class, "getInvoiceForm", "")
         .toUriString());
     return "invoice/pdfSilentPrint";
   }
 
 }
+
