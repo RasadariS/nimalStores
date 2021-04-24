@@ -34,6 +34,6 @@ public class Category {
     @Size( min = 3, message = "Your name cannot be accepted" )
     private String name;
 
-    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "category")
     private List<Item> items;
 }

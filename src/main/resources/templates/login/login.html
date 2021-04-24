@@ -2,40 +2,66 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Thymeleaf Springboot </title>
+    <title>Nimal Stores(Pvt)Ltd</title>
 
     <!--style sheet ekak link karanne mehemai-->
-    <link rel="stylesheet" data-th-href="@{/css/myCss.css}">
+    <link data-th-href="@{/fav.jpg}"  rel="shortcut icon" >
+    <link data-th-href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+    <link data-th-href="@{/css/fontawsom-all.min.css}" rel="stylesheet">
+    <link data-th-href="@{/css/style.css}" rel="stylesheet">
 </head>
-<body>
+<body class="h-100">
+<div class="container-fluid full-bg h-100">
+    <div class="container h-100">
 
-<div class="form-area">
-    <form th:action="${'/login'}" method="post">
-    <h2>Samarasinghe Super</h2>
+        <div class="row no-margin">
+            <div class="bg-layer  ">
+                <form th:action="${'/login'}" method="post">
 
-    <p> User Name :</p>
-    <input type="text" name="username" id="username" th:name="${'username'}" placeholder="Enter User Name" required>
+                    <div class="login-box row">
+                        <img data-th-src="${'../img/logo.jpg'}" alt="Company log" style="width:250px;height:100px;"  id="logo" class="animated-spin">
+                        <h2>User login</h2>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
+                            </div>
+                            <input type="text" class="form-control form-control-sm" th:name="${'username'}" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control form-control-sm" th:name="${'password'}" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                        </div>
 
-    <p>Password :</p>
-    <input type="password" id="inputPassword" th:name="${'password'}" placeholder="Enter Password" required>
+                        <button class="btn btn-default">Click to Login</button>
 
-    <div style="margin-top:10px">
-        <button id="btnLogin" class="col-md-12 btn btn-primary"><i class= "fa fa-key" style="margin-right: 10px;font-size: 18px"></i>Login</button>
+                        <p class="no-c"> <a href="#"></a></p>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="foter-credit">
+            <a href="">Designed by : Nimal Stores(Pvt)Ltd..</a>
+        </div>
+
+
     </div>
 
-<div class="container-fluid " th:if="${param.error}">
-                <p class="bg-white text-capitalize text-danger text-lg-center">Invalid username or password. </p>
-            </div>
-            <div class="container-fluid ">
-                <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
-            </div>
-        </form>
 </div>
 
 <!--footer include-->
 <footer th:replace="~{fragments/footer :: footerFragment}"></footer>
 <!--script include-->
 <script th:replace="~{fragments/script :: scriptFragment}"></script>
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 
 

@@ -19,7 +19,7 @@ repositories {
 springBoot {
 	buildInfo {
 		properties {
-			group = 'lk.samarasingher_super'
+			group = 'lk.w3Academy'
 			version = '0.0.1-SNAPSHOT'
 			sourceCompatibility = '11'
 		}
@@ -34,6 +34,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 //twilio - to send SMS
 	implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
 //=========================Springboot cache=========//
@@ -51,9 +52,9 @@ dependencies {
 // https://mvnrepository.com/artifact/org.webjars/bootstrap
 	compile group: 'org.webjars', name: 'bootstrap', version: '4.4.1'
 // https://mvnrepository.com/artifact/org.webjars/popper.js
-	compile group: 'org.webjars', name: 'popper.js', version: '2.5.4'
+	compile group: 'org.webjars', name: 'popper.js', version: '1.15.0'
 // https://mvnrepository.com/artifact/org.webjars/jquery
-	compile group: 'org.webjars', name: 'jquery', version: '3.5.1'
+	compile group: 'org.webjars', name: 'jquery', version: '3.4.1'
 // https://mvnrepository.com/artifact/org.webjars/jquery-ui
 	compile group: 'org.webjars', name: 'jquery-ui', version: '1.12.1'
 // https://mvnrepository.com/artifact/org.webjars/font-awesome
@@ -86,4 +87,7 @@ test {
 	useJUnitPlatform()
 }
 
-
+/*To boot run*/
+bootRun {
+	sourceResources sourceSets.main
+}

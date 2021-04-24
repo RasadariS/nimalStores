@@ -4,6 +4,7 @@ package lk.nimal_stores.asset.employee.service;
 import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.employee.dao.EmployeeDao;
 import lk.nimal_stores.asset.employee.entity.Employee;
+import lk.nimal_stores.asset.employee.entity.enums.EmployeeStatus;
 import lk.nimal_stores.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -39,7 +40,10 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
 
     public Employee persist(Employee employee) {
         if(employee.getId()==null){
-            employee.setLiveDead(LiveDead.ACTIVE);}
+            employee.setLiveDead(LiveDead.ACTIVE);
+//            when add new employee his or her status wll be automatically set to working
+        employee.setEmployeeStatus(EmployeeStatus.WORKING);
+        }
         return employeeDao.save(employee);
     }
 

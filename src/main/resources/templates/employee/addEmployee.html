@@ -2,6 +2,8 @@
 <html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
+  <title>addEmployee</title>
+<body background="/img/formbg.jpg"/>
 </head >
 <body >
 
@@ -25,15 +27,18 @@
               <a href="/employee" class="btn btn-success" >
                 View Employees
               </a >
+
             </div >
           </div >
+          <br>
           <div class="row text-center" >
             <div class="col" >
-              <h4 class="text-light text-center" >
+              <h4 class="text-danger text-center" >
                 <strong >
                   <span data-th-text="${addStatus==true?'New Employee':'Update Employee Details'}" ></span >
                 </strong >
               </h4 >
+              <br>
             </div >
           </div >
         </div >
@@ -289,7 +294,7 @@
             </div >
           </div >
           <!--Employee status-->
-          <div class="form-row text-right" >
+          <div class="form-row text-right" data-th-if="${addStatus==false}" >
             <div class="col-md-4" >
               <label class="control-label" for="employeeStatus" >Employee Status :</label >
             </div >
@@ -372,41 +377,43 @@
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 
 <script >
-    $(document).ready(function () {
-        imageSrcAttributeCheck();
-    });
+  $(document).ready(function () {
+    imageSrcAttributeCheck();
+  });
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            let reader = new FileReader();
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      let reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#image').attr('src', e.target.result);
-            }
+      reader.onload = function (e) {
+        $('#image').attr('src', e.target.result);
+      }
 
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
-        }
+      if (input.files[0].size < 10485760) {
+        reader.readAsDataURL(input.files[0]);
+      } else {
+        swal({
+          title: "Select file size was too large select less than 1MB file",
+          icon: "warning",
+        });
+      }
     }
+  }
 
-    //display selected image
-    $("#imgUpload").change(function () {
-        $("#image").toggle('show');
-        readURL(this);
+  //display selected image
+  $("#imgUpload").change(function () {
+    $("#image").toggle('show');
+    readURL(this);
 
-    });
+  });
 
-    //image is not -> showing area hide
-    function imageSrcAttributeCheck() {
-        let attribute = $("#image").attr("src");
-        if (attribute === '') {
-            $("#image").toggle('hide');
-        }
+  //image is not -> showing area hide
+  function imageSrcAttributeCheck() {
+    let attribute = $("#image").attr("src");
+    if (attribute === '') {
+      $("#image").toggle('hide');
     }
-
-    //input type date can not be selected future date
-    $('[type="date"]').prop('max', function () {
-      return new Date().toJSON().split('T')[0];
-    });
+  }
 </script >
 </div>
 </body >
