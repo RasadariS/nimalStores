@@ -29,7 +29,6 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
     this.invoiceDao = invoiceDao;
   }
 
-
   public List< Invoice > findAll() {
     return invoiceDao.findAll().stream()
         .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
