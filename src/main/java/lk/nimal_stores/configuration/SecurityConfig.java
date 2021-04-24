@@ -76,22 +76,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http.authorizeRequests().antMatchers("/").permitAll();
 */
     // For developing easy to give permission all lin
-// {"ADMIN","PROCUREMENT_MANAGER","CASHIER","MANAGER","HR_MANAGER","ACCOUNT_MANAGER"}
+// {"ADMIN","STOCK_KEEPER","CASHIER","MANAGER","HR_MANAGER","ACCOUNTANT"}
 
     http.authorizeRequests(
         authorizeRequests ->
             authorizeRequests
                 .antMatchers(ALL_PERMIT_URL).permitAll()
-                .antMatchers("/category/**").hasAnyRole("ADMIN","PROCUREMENT_MANAGER","CASHIER","MANAGER")
+                .antMatchers("/category/**").hasAnyRole("ADMIN","STOCK_KEEPER","CASHIER","MANAGER")
                 .antMatchers("/category/**").hasAnyRole("CASHIER","MANAGER")
-                .antMatchers("/discountRatio/**").hasAnyRole("PROCUREMENT_MANAGER","MANAGER")
+                .antMatchers("/discountRatio/**").hasAnyRole("STOCK_KEEPER","MANAGER")
                 .antMatchers("/employee/**").hasAnyRole("MANAGER","HR_MANAGER" ,"ADMIN")
-                .antMatchers("/goodReceivedNote/**").hasAnyRole("MANAGER","PROCUREMENT_MANAGER")
-                .antMatchers("/payment/**").hasAnyRole("MANAGER","ACCOUNT_MANAGER")
-                .antMatchers("/purchaseOrder/**").hasAnyRole("MANAGER","PROCUREMENT_MANAGER")
+                .antMatchers("/goodReceivedNote/**").hasAnyRole("MANAGER","STOCK_KEEPER")
+                .antMatchers("/payment/**").hasAnyRole("MANAGER","ACCOUNTANT")
+                .antMatchers("/purchaseOrder/**").hasAnyRole("MANAGER","STOCK_KEEPER")
                 .antMatchers("/role/**").hasAnyRole("MANAGER","HR_MANAGER","ADMIN")
-                .antMatchers("/supplier/**").hasAnyRole("MANAGER","PROCUREMENT_MANAGER")
-                .antMatchers("/supplierItem/**").hasAnyRole("MANAGER","PROCUREMENT_MANAGER")
+                .antMatchers("/supplier/**").hasAnyRole("MANAGER","STOCK_KEEPER")
+                .antMatchers("/supplierItem/**").hasAnyRole("MANAGER","STOCK_KEEPER")
                 .antMatchers("/user/**").hasAnyRole("MANAGER","HR_MANAGER","ADMIN")
                 .anyRequest()
                 .authenticated())

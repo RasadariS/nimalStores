@@ -3,13 +3,14 @@
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
   <title >addUser</title >
+<body background="/img/formbg.jpg"/>
 </head >
 <body >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 <!--Employee find-->
 <div class="container-fluid " id="employeeFindForm" data-th-if="${employeeDetailShow==false}" >
   <div class="col-sm-12 flex-column " >
-    <form id="form" method="POST" data-th-action="${'/user/addUser'}" data-th-object="${employee}"
+    <form id="form" method="POST" data-th-action="${'/user/workingPlace'}" data-th-object="${employee}"
           enctype="multipart/form-data" >
       <div class="form-row" >
         <div class="container-fluid " >

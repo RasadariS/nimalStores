@@ -25,10 +25,10 @@ img {
 a {
   text-decoration: none;
   outline: none;
-  color: #444; }
+  color: #007bff; }
 
 a:hover {
-  color: #444; }
+  color: #0062cc; }
 
 ul {
   margin-bottom: 0;
