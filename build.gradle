@@ -19,7 +19,9 @@ repositories {
 springBoot {
 	buildInfo {
 		properties {
-			group = 'lk.samarasingher_super'
+
+			group = 'lk.nimal_store'
+
 			version = '0.0.1-SNAPSHOT'
 			sourceCompatibility = '11'
 		}
@@ -34,6 +36,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 //twilio - to send SMS
 	implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
 //=========================Springboot cache=========//
@@ -86,4 +89,7 @@ test {
 	useJUnitPlatform()
 }
 
+bootRun {
+	sourceResources sourceSets.main
+}
 
