@@ -19,7 +19,7 @@ repositories {
 springBoot {
 	buildInfo {
 		properties {
-			group = 'lk.w3Academy'
+			group = 'lk.nimal_store'
 			version = '0.0.1-SNAPSHOT'
 			sourceCompatibility = '11'
 		}
@@ -49,14 +49,12 @@ dependencies {
 // ==== this is need to html content convert to pdf
 	compile group: 'com.itextpdf.tool', name: 'xmlworker', version: '5.5.9'
 //====== use as three jars to set bootstrap and front awesome
-// https://mvnrepository.com/artifact/org.webjars/bootstrap
+	// https://mvnrepository.com/artifact/org.webjars/bootstrap
 	compile group: 'org.webjars', name: 'bootstrap', version: '4.4.1'
-// https://mvnrepository.com/artifact/org.webjars/popper.js
-	compile group: 'org.webjars', name: 'popper.js', version: '1.15.0'
-// https://mvnrepository.com/artifact/org.webjars/jquery
-	compile group: 'org.webjars', name: 'jquery', version: '3.4.1'
-// https://mvnrepository.com/artifact/org.webjars/jquery-ui
-	compile group: 'org.webjars', name: 'jquery-ui', version: '1.12.1'
+	// https://mvnrepository.com/artifact/org.webjars/popper.js
+	compile group: 'org.webjars', name: 'popper.js', version: '2.5.4'
+	// https://mvnrepository.com/artifact/org.webjars/jquery
+	compile group: 'org.webjars', name: 'jquery', version: '3.5.1'
 // https://mvnrepository.com/artifact/org.webjars/font-awesome
 	compile group: 'org.webjars', name: 'font-awesome', version: '5.11.2'
 // https://mvnrepository.com/artifact/org.webjars/pdf-js
