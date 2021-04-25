@@ -3,6 +3,7 @@ package lk.nimal_stores.asset.item.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.nimal_stores.asset.brand.entity.Brand;
 import lk.nimal_stores.asset.category.entity.Category;
 import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.item.entity.enums.ItemStatus;
@@ -59,4 +60,7 @@ public class Item extends AuditEntity {
 
     @OneToMany( mappedBy = "item" )
     private List< PurchaseOrderItem > purchaseOrderItems;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Brand brand;
 }

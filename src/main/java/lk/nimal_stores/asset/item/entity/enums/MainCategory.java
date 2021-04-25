@@ -7,24 +7,24 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum MainCategory {
 
-    CANNED_FOODS("Canned Foods"),
-    CONFECTIONERY_ITEMS("Confectionery Items"),
+    BAKERY("Bakery"),
+    SNAKS_AND_CONFECTIONERY_ITEMS("Snaks & Confectionery Items"),
     RICE_PULSES("Rice Pulses"),
-    CONDIMENTS_SPICES("Condiments Spices"),
-    MEAT_FISH_EGGS("Meat, Fish & Eggs"),
-    OIL_FATS("Oil Fats"),
+    SEA_FOOD("Sea Food"),
+    MEATS("Meats"),
+    TEA_AND_COFFEE("Tea & Coffee"),
     VEGETABLES_FRUITS("Vegetables & Fruits"),
-    MILK_POWDER("Milk Powder"),
     DAIRY_PRODUCTS("Dairy Products"),
     BABY_PRODUCTS("Baby Products"),
     PERSONAL_CARE("Personal Care"),
     HOUSEHOLD("Household"),
-    BREAKFAST_CERALS("Breakfast Cerals"),
-    GOURMET_INGREDIENTS("Gourmet Ingredients"),
+    COOKING_ESSENTIALS("Cooking Essentials"),
+    BEVERAGES("Beverages"),
     DESSERT_INGREDIENTS("Dessert Ingredients"),
-    SPECIAL_SEA_FOODS("Special Sea Foods"),
+    SEEDS_AND_SPICES("Seeds and Spices"),
     PARTY_FAVORS("Party Favors"),
-    ESSENTIAL_GROCERY_PACKS("Essential Grocery Packs");
+    STATIONARY("Stationary"),
+    PET_PRODUCTS("Pet Products");
 
 
     private final String mainCategory;
