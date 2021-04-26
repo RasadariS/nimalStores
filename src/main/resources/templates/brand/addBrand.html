@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >addBrand</title >
+</head >
+<body >
+<nav th:replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<!--Heading Area-->
+<div id="add brand" >
+  <div class="row" >
+    <div class="container-fluid  " >
+      <div class="row text-center   " >
+        <!--ViewList Button-->
+        <div class="col" >
+          <a href="/brand" class="btn btn-success" tabindex="1" >
+            <i class="fa fa-list" ></i >&nbsp;&nbsp;View Brand
+          </a >
+        </div >
+        <!--Form Name-->
+        <div class="col" >
+          <h4 class="text text-center text-white" >
+
+            <span data-th-text="${addStatus==true?'New Brand':'Update Brand Details'}" ></span >
+
+          </h4 >
+        </div >
+        <!--Home Button-->
+        <div class="col" >
+          <a class="btn btn-info" href="/home" tabindex="2" >
+            <i class="fa fa-home" style="font-size: 20px" ></i > &nbsp;&nbsp;Home
+          </a >
+        </div >
+      </div >
+    </div >
+  </div >
+  <!--Form Content-->
+  <div class="container-fluid  formBorder" style="margin-top:200px" >
+    <div class="col-sm-12 flex-column " >
+      <form id="form" class="form-horizontal formedit" th:action="${addStatus==true?'/brand/save':'/brand/update'}"
+            th:object="${brand}" method="POST" >
+        <div class="row" >
+          <!--Left Side-->
+          <div class="form-group col-md-12 col-sm-12 text-left flex-column" >
+            <div class="col-sm-6 col-md-6 offset-2" >
+              <!--Id-->
+              <div id="idStatus" th:if="${addStatus==false}" class="form-row text-right" >
+                <div class="col-md-4" >
+                  <label class="control-label" for="id" >ID :</label >
+                </div >
+                <div class="col-md-8" >
+                  <input id="id" th:field="*{id}" class="form-control" type="text" readonly />
+                </div >
+              </div > <!--Main Category -->
+              <div class="form-row text-right" >
+                <div class="col-md-4" >
+                  <label class="control-label" for="mainCategory" ><span class="requiredfield">*</span> Main Category :</label >
+                </div >
+                <div class="col-md-8" >
+                  <select id="mainCategory" data-th-value="${addStatus==false?'brand.category.mainCategory':''}" class="form-control"
+                          tabindex="4" style="font-size: large"
+                          required >
+                    <option value="" disabled >Please select</option >
+                    <option data-th-each="mainCategory : ${mainCategories}"
+                            data-th-text="${mainCategory.mainCategory}"
+                            data-th-value="${mainCategory}"
+                    >
+                    </option >
+                  </select >
+                </div >
+              </div >
+              <!--Sub Category -->
+              <div class="form-row text-right" >
+                <div class="col-md-4" ><span class="requiredfield">*</span>
+                  <label class="control-label" for="subCategory" >Sub Category :</label >
+                </div >
+                <div class="col-md-8" >
+                  <select id="subCategory" data-th-name="${'category'}" class="form-control" tabindex="4"
+                          style="font-size: large" required >
+                    <option value="" disabled >Please select</option >
+                    <option data-th-value="${addStatus==false?'brand.category.id':''}" data-th-text="${addStatus==false?'brand.category.name':''}" ></option >
+                  </select >
+                </div >
+              </div >
+              <!--Name-->
+              <div class="form-row text-right" >
+                <div class="col-md-4" ><span class="requiredfield">*</span>
+                  <label class="control-label" for="name" >Brand Name :</label >
+                </div >
+                <div class="col-md-8" >
+                  <input id="name" th:field="*{name}" class="form-control" tabindex="4" type="text"
+                         required />
+                  <span id="nameError" th:errors="*{name}" th:if="${#fields.hasErrors('name')}" class="error" >Error Name</span >
+                </div >
+              </div >
+            </div >
+
+          </div >
+          <!--Right Side-->
+          <div class="form-group col-md-12 col-sm-12 text-right flex-column" >
+            <div class="col-sm-6 col-md-6 offset-2" >
+              <!--Created by and created at-->
+              <div id="updateStatus" th:if="${addStatus==false}" >
+                <!--Created By-->
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="createdBy" >Created By :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <input id="createdBy" th:field="*{createdBy}" class="form-control" type="text"
+                           readonly />
+                  </div >
+                </div >
+                <!--Created At-->
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="createdAt" >Created At :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <input id="createdAt" th:field="*{createdAt}" class="form-control" type="text"
+                           readonly />
+                  </div >
+                </div >
+              </div >
+            </div >
+          </div >
+          <!--Button-->
+          <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+            <!--Back Button-->
+            <!--  <a class="btn btn-dark"  tabindex="8" href="/brand">
+                  <i class="fas fa-arrow-circle-left" style="font-size: 20px"></i>&nbsp;&nbsp;Back
+              </a>-->
+            <!--Save Button-->
+            <button class="btn btn-success btn-space " type="submit" tabindex="9" >
+              <i class="fa fa-save" ></i >&nbsp;&nbsp;
+              <span id="submit" data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+            </button >
+            <!--Cancel Button-->
+            <button class="btn btn-warning btn-space " type="reset" tabindex="10" >
+              <i class="fa fa-redo" ></i >&nbsp;&nbsp;Clear
+            </button >
+          </div >
+          <!--Error-->
+          <div class="form-row" >
+            <label id="errorLabel" th:if="${#fields.hasErrors('*')}" th:text="'Errors: '" >Errors: </label >
+            <ul id="error" >
+              <li data-th-each="err: ${#fields.errors('*')}" data-th-text="${err}"
+                  class="error" ></li >
+            </ul >
+          </div >
+        </div >
+      </form >
+    </div >
+  </div >
+</div >
+<!--footer include-->
+<div th:replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div th:replace="~{fragments/script :: scriptFragment}" ></div >
+<script >
+
+    $(document).ready(function () {
+            let message = '';
+            $('.error').each(function (index) {
+                message += $(this).text();
+            });
+
+            if (message) {
+                setTimeout(function () {
+                    swal({
+                        title: "System Errors  ",
+                        icon: "warning",
+                        text: message,
+                    });
+                }, 1000);
+            }
+
+
+            let mainCategoryValueBind = $("#mainCategoryValueBind").val();
+            if (mainCategoryValueBind) {
+                $("#mainCategory").val(mainCategoryValueBind);
+                getSubCategory(mainCategoryValueBind);
+            }
+        }
+    );
+    $("#mainCategory").bind("change", function () {
+        getSubCategory(this.value);
+    });
+
+    let getSubCategory = function (val) {
+        let url = "[[${urlMainCategory}]]" + val;
+        removeOption('subCategory');
+        $.getJSON(url, function (val) {
+            $.each(val, function () {
+                $("#subCategory").append(`<option value="${this.id}">${this.name}</option>`);
+            });
+        });
+
+    };
+
+    let removeOption = function (idValue) {
+        $(`#${idValue}`).find('option')
+            .remove();
+    }
+
+
+</script >
+</body >
+</html >
