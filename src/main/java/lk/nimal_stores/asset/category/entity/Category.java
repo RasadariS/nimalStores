@@ -1,6 +1,7 @@
 package lk.nimal_stores.asset.category.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.nimal_stores.asset.brand.entity.Brand;
 import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.item.entity.Item;
 import lk.nimal_stores.asset.item.entity.enums.MainCategory;
@@ -33,6 +34,9 @@ public class Category {
 
     @Size( min = 3, message = "Your name cannot be accepted" )
     private String name;
+
+    @OneToMany(mappedBy = "category")
+    private List<Brand> brands;
 
     @OneToMany(mappedBy = "category")
     private List<Item> items;

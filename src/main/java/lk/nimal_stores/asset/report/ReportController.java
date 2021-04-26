@@ -3,6 +3,7 @@ package lk.nimal_stores.asset.report;
 import lk.nimal_stores.asset.common_asset.model.NameCount;
 import lk.nimal_stores.asset.common_asset.model.ParameterCount;
 import lk.nimal_stores.asset.common_asset.model.TwoDate;
+import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.employee.entity.Employee;
 import lk.nimal_stores.asset.invoice.entity.Invoice;
 import lk.nimal_stores.asset.invoice.entity.enums.PaymentMethod;
@@ -10,8 +11,13 @@ import lk.nimal_stores.asset.invoice.service.InvoiceService;
 import lk.nimal_stores.asset.invoice_ledger.entity.InvoiceLedger;
 import lk.nimal_stores.asset.invoice_ledger.service.InvoiceLedgerService;
 import lk.nimal_stores.asset.item.entity.Item;
+import lk.nimal_stores.asset.item.service.ItemService;
+import lk.nimal_stores.asset.ledger.entity.Ledger;
+import lk.nimal_stores.asset.ledger.service.LedgerService;
 import lk.nimal_stores.asset.payment.entity.Payment;
 import lk.nimal_stores.asset.payment.service.PaymentService;
+import lk.nimal_stores.asset.purchase_order.service.PurchaseOrderService;
+import lk.nimal_stores.asset.purchase_order_item.service.PurchaseOrderItemService;
 import lk.nimal_stores.asset.report.model.ItemSellPriceQuantityBuyingPrice;
 import lk.nimal_stores.asset.report.model.LedgerQuantitySellPrice;
 import lk.nimal_stores.asset.user_management.user.service.UserService;
@@ -48,13 +54,17 @@ public class ReportController {
   private final LedgerService ledgerService;
   private final PurchaseOrderItemService purchaseOrderItemService;
 
-  public ReportController(PaymentService paymentService, InvoiceService invoiceService, OperatorService operatorService, DateTimeAgeService dateTimeAgeService, UserService userService, InvoiceLedgerService invoiceLedgerService) {
+  public ReportController(PaymentService paymentService, InvoiceService invoiceService, OperatorService operatorService, DateTimeAgeService dateTimeAgeService, UserService userService, InvoiceLedgerService invoiceLedgerService, PurchaseOrderService purchaseOrderService, ItemService itemService, LedgerService ledgerService, PurchaseOrderItemService purchaseOrderItemService) {
     this.paymentService = paymentService;
     this.invoiceService = invoiceService;
     this.operatorService = operatorService;
     this.dateTimeAgeService = dateTimeAgeService;
     this.userService = userService;
     this.invoiceLedgerService = invoiceLedgerService;
+    this.purchaseOrderService = purchaseOrderService;
+    this.itemService = itemService;
+    this.ledgerService = ledgerService;
+    this.purchaseOrderItemService = purchaseOrderItemService;
   }
 
   private String commonAll(List< Payment > payments, List< Invoice > invoices, Model model, String message,
@@ -390,7 +400,7 @@ public class ReportController {
       }
     }
 
-    List< Ledger > ledgers = new ArrayList<>();
+    List<Ledger> ledgers = new ArrayList<>();
     for ( LedgerQuantitySellPrice ledgerQuantitySellPrice : ledgerQuantitySellPrices ) {
       ledgers.add(ledgerQuantitySellPrice.getLedger());
     }
