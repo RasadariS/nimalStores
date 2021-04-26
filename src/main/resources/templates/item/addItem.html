@@ -79,6 +79,24 @@
                     </select >
                   </div >
                 </div >
+
+                <!--Brand -->
+                <div class="form-row text-right" >
+                  <div class="col-md-4" ><span class="requiredfield">*</span>
+                    <label class="control-label" for="brand" >Brand :</label >
+                  </div >
+                  <div class="col-md-4" >
+                    <select id="brand" data-th-field="*{brand}" class="form-control" tabindex="4"
+                            required >
+                      <option value="" >Please select</option >
+                      <option data-th-if="${addStatus==false}" data-th-text="${item.brand.name}"
+                              data-th-value="${item.brand.id}"
+                      >
+                      </option >
+                    </select >
+                  </div >
+                </div >
+
                 <!--Name-->
                 <div class="form-row text-right" >
                   <div class="col-md-4" >
@@ -177,7 +195,7 @@
 <script >
     $(document).ready(function () {
             let mainCategoryValueBind = $("#mainCategoryValueBind").val();
-            if (mainCategoryValueBind !== null || mainCategoryValueBind !== undefined) {
+            if (mainCategoryValueBind) {
                 $("#mainCategory").val(mainCategoryValueBind);
                 getSubCategory(mainCategoryValueBind);
             }
@@ -186,21 +204,71 @@
     $("#mainCategory").bind("change", function () {
         getSubCategory(this.value);
     });
+    let brandList = [];
+
     let getSubCategory = function (val) {
         let url = "[[${urlMainCategory}]]" + val;
         removeOption('subCategory');
+        removeOption('brand');
+        $("#subCategory").append(`<option value="">Please Select</option>`);
+
         $.getJSON(url, function (val) {
             $.each(val, function () {
                 $("#subCategory").append(`<option value="${this.id}">${this.name}</option>`);
+                let brand = {
+                    id: this.id,
+                    brands: this.brands,
+                }
+                brandList.push(brand)
             });
         });
 
     };
-    let removeOption = function (idValue) {
-        $(`#${idValue}`).find('option')
-            .remove();
+
+    $("#subCategory").change(function () {
+        removeOption('brand');
+        $("#brand").append(`<option value="">Please Select</option>`);
+        brandAdd($(this).val());
+    })
+
+    function brandAdd(val) {
+        if (val && brandList.length !== 0) {
+            for (let i = 0; i < brandList.length; i++) {
+                if (brandList[i].id === parseFloat(val)) {
+                    for (let brandListElement of brandList[i].brands) {
+                        $("#brand").append(`<option value="${brandListElement.id}">${brandListElement.name}</option>`);
+                    }
+                }
+            }
+        }
     }
 
+    let removeOption = function (idValue) {
+        $(`#${idValue}`).find('option').remove();
+    }
+
+/*
+    $("#eName").keyup(function () {
+        console.log("hehe")
+        nameCreation();
+    });
+    $("#subCategory, #brand, #measurement ").change(function () {
+        console.log("sdasds "+$(this).val());
+        nameCreation();
+    });
+
+    function nameCreation() {
+        let subCategory = $("#subCategory option:selected").text();
+        let brand = $("#brand option:selected").text();
+        let eName = $("#eName").val();
+        let measurement = $("#measurement option:selected").text();
+
+        if (subCategory && brand && measurement && eName) {
+            //Elephanthouse-icecream-1l
+            //subcategory - brand - name - measurement
+            $("#name").val(subCategory + "-" + brand + "-" + eName + "-" + measurement);
+        }
+    }*/
 
 </script >
 </body >
