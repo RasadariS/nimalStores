@@ -2,8 +2,9 @@ package lk.nimal_stores.asset.good_received_note.controller;
 
 import lk.nimal_stores.asset.common_asset.model.enums.LiveDead;
 import lk.nimal_stores.asset.good_received_note.entity.GoodReceivedNote;
-import lk.nimal_stores.asset.good_received_note.entity.enums.GoodReceivedNoteState;
 import lk.nimal_stores.asset.good_received_note.service.GoodReceivedNoteService;
+import lk.nimal_stores.asset.item.entity.Item;
+import lk.nimal_stores.asset.item.service.ItemService;
 import lk.nimal_stores.asset.ledger.entity.Ledger;
 import lk.nimal_stores.asset.ledger.service.LedgerService;
 import lk.nimal_stores.asset.purchase_order.entity.PurchaseOrder;
@@ -16,8 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/goodReceivedNote")
@@ -25,12 +24,15 @@ public class GoodReceivedNoteController {
     private final GoodReceivedNoteService goodReceivedNoteService;
     private final PurchaseOrderService purchaseOrderService;
     private final LedgerService ledgerService;
+    private final ItemService itemService;
 
     public GoodReceivedNoteController(GoodReceivedNoteService goodReceivedNoteService,
-                                      PurchaseOrderService purchaseOrderService, LedgerService ledgerService) {
+                                      PurchaseOrderService purchaseOrderService, LedgerService ledgerService,
+                                      ItemService itemService) {
         this.goodReceivedNoteService = goodReceivedNoteService;
         this.purchaseOrderService = purchaseOrderService;
         this.ledgerService = ledgerService;
+        this.itemService = itemService;
     }
 
 
@@ -54,39 +56,42 @@ public class GoodReceivedNoteController {
         if ( bindingResult.hasErrors() ) {
             return "redirect:/goodReceivedNote/".concat(String.valueOf(goodReceivedNote.getPurchaseOrder().getId()));
         }
-//New Leger add to add system as new item on ledger
-        List< Ledger > ledgers = new ArrayList<>();
+        GoodReceivedNote goodReceivedNoteDb = goodReceivedNoteService.persist(goodReceivedNote);
+
         for ( Ledger ledger : goodReceivedNote.getLedgers() ) {
-            Ledger ledgerDB = ledgerService.findByItemAndAndExpiredDateAndSellPrice(ledger.getItem(),
-                                                                                    ledger.getExpiredDate(),
-                                                                                    ledger.getItem().getSellPrice());
+
+            Item item = itemService.findById(ledger.getItem().getId());
+
+            Ledger ledgerDB = ledgerService.findByItemAndAndExpiredDateAndSellPrice(item,
+                                                                                    ledger.getExpiredDate(),item.getSellPrice());
 //if there is on value in ledger need to update it
             if ( ledgerDB != null ) {
                 //before update need to check price and expire date
-                if ( ledgerDB.getExpiredDate() == ledger.getExpiredDate() && ledgerDB.getSellPrice().equals(ledger.getSellPrice()) ) {
-                    ledgerDB.setQuantity(ledgerDB.getQuantity() + ledger.getQuantity());
+                if ( ledgerDB.getSellPrice().equals(ledger.getSellPrice()) && ledgerDB.getExpiredDate() == ledger.getExpiredDate()) {
 
-                    ledgerDB.setGoodReceivedNote(goodReceivedNote);
-                    ledgers.add(ledgerDB);
+                    int quantity = Integer.parseInt(ledgerDB.getQuantity()) + Integer.parseInt(ledger.getQuantity());
+                    ledgerDB.setQuantity(Integer.toString(quantity));
+                    ledgerDB.setGoodReceivedNote(goodReceivedNoteDb);
+                    ledgerService.persist(ledgerDB);
+                    System.out.println("same item");
                 } else {
-                    ledger.setGoodReceivedNote(goodReceivedNote);
+                    System.out.println("price change item");
+                    ledger.setGoodReceivedNote(goodReceivedNoteDb);
                     ledger.setLiveDead(LiveDead.ACTIVE);
-                    ledgers.add(ledger);
+                    ledgerService.persist(ledger);
                 }
+            } else {
+                System.out.println("new item");
+                ledger.setGoodReceivedNote(goodReceivedNoteDb);
+                ledger.setLiveDead(LiveDead.ACTIVE);
+                ledgerService.persist(ledger);
             }
-            ledger.setGoodReceivedNote(goodReceivedNote);
-            ledger.setLiveDead(LiveDead.ACTIVE);
-            ledgers.add(ledger);
-
         }
-        goodReceivedNote.setGoodReceivedNoteState(GoodReceivedNoteState.NOT_PAID);
-        goodReceivedNote.setLedgers(ledgers);
 
-        PurchaseOrder purchaseOrder = purchaseOrderService.findById(goodReceivedNote.getPurchaseOrder().getId());
-        purchaseOrder.setPurchaseOrderStatus(PurchaseOrderStatus.NOT_PROCEED);
 
-        purchaseOrderService.persist(purchaseOrder);
-        goodReceivedNoteService.persist(goodReceivedNote);
+        PurchaseOrder purchaseOrderDb = purchaseOrderService.findById(goodReceivedNoteDb.getPurchaseOrder().getId());
+        purchaseOrderDb.setPurchaseOrderStatus(PurchaseOrderStatus.NOT_PROCEED);
+        purchaseOrderService.persist(purchaseOrderDb);
         return "redirect:/goodReceivedNote";
     }
 
