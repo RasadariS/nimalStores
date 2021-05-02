@@ -77,6 +77,8 @@
               <select id="subCategory" data-th-name="${'category'}" class="form-control" tabindex="4"
                       style="font-size: large" required >
                 <option value="" disabled >Please select</option >
+                <option data-th-if="${addStatus==false}" data-th-text="${item.category.name}"
+                        data-th-value="${item.category.id}" ></option >
               </select >
             </div >
           </div >
@@ -197,11 +199,11 @@
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 <script >
     $(document).ready(function () {
-        let mainCategoryValueBind = $("#mainCategoryValueBind").val();
-        if (mainCategoryValueBind) {
-            $("#mainCategory").val(mainCategoryValueBind);
-            getSubCategory(mainCategoryValueBind);
-        }
+        // let mainCategoryValueBind = $("#mainCategoryValueBind").val();
+        // if (mainCategoryValueBind) {
+        //     $("#mainCategory").val(mainCategoryValueBind);
+        //     getSubCategory(mainCategoryValueBind);
+        // }
     });
     $("#mainCategory").bind("change", function () {
         getSubCategory(this.value);

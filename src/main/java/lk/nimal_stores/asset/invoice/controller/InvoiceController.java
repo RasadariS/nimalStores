@@ -179,7 +179,7 @@ public class InvoiceController {
         .fromMethodName(InvoiceController.class, "invoicePrint", id)
         .toUriString());
     model.addAttribute("redirectUrl",MvcUriComponentsBuilder
-        .fromMethodName(InvoiceController.class, "getInvoiceForm")
+        .fromMethodName(InvoiceController.class, "getInvoiceForm","")
         .toUriString());
     return "invoice/pdfSilentPrint";
   }

@@ -108,32 +108,22 @@ public class PurchaseOrderController {
         purchaseOrder.setPurchaseOrderItems(purchaseOrderItemList);
         PurchaseOrder purchaseOrderSaved = purchaseOrderService.persist(purchaseOrder);
 
-        if (purchaseOrderSaved.getSupplier().getEmail() != null) {
+        if ( purchaseOrderSaved.getSupplier().getEmail() != null ) {
             StringBuilder message = new StringBuilder("Item Name\t\t\t\t\tQuantity\t\t\tItem Price\t\t\tTotal(Rs)\n");
-            for (int i = 0; i < purchaseOrder.getPurchaseOrderItems().size(); i++) {
+
+            for ( int i = 0; i < purchaseOrder.getPurchaseOrderItems().size(); i++ ) {
                 Item item = itemService.findById(purchaseOrder.getPurchaseOrderItems().get(i).getItem().getId());
-                PurchaseOrderItem purchaseOrderItem = purchaseOrderItemService.findById(purchaseOrderSaved.getPurchaseOrderItems().get(i).getId());
                 message
-                        .append(item.getName())
-                        .append("\t\t\t\t\t")
-                        .append(purchaseOrderItem.getQuantity())
-                        .append("\t\t\t\t\t")
-                        .append(item.getSellPrice())
-                        .append("\t\t\t\t\t")
-                        .append(purchaseOrderItem.getLineTotal())
-                        .append("\n");
+                    .append(item.getName())
+                    .append("\t\t\t\t\t")
+                    .append(purchaseOrderSaved.getPurchaseOrderItems().get(i).getQuantity())
+                    .append("\t\t\t")
+                    .append(Integer.toString((purchaseOrderSaved.getPurchaseOrderItems().get(i).getLineTotal().intValue() / Integer.parseInt(purchaseOrderSaved.getPurchaseOrderItems().get(i).getQuantity()))))
+                    .append("\t\t\t")
+                    .append(purchaseOrderSaved.getPurchaseOrderItems().get(i).getLineTotal()).append("\n");
             }
             emailService.sendEmail(purchaseOrderSaved.getSupplier().getEmail(),
-                    "Requesting Items According To PO Code " + purchaseOrder.getCode(), message.toString());
-            if (purchaseOrderSaved.getSupplier().getContactOne() != null) {
-                try {
-                    String mobileNumber = purchaseOrderSaved.getSupplier().getContactOne().substring(1, 10);
-                    twilioMessageService.sendSMS("+94" + mobileNumber, "There is immediate PO from " +
-                            "Samarasingher Super \nPlease Check Your Email Form Further Details");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+                                   "Requesting Items According To PO Code " + purchaseOrder.getCode(), message.toString());
         }
         return "redirect:/purchaseOrder/all";
     }
