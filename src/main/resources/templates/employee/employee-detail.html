@@ -14,18 +14,20 @@
         <div class="row text-center formManagement border-info" >
 
           <div class="col" >
-            <a class="btn btn-info" href="/home" >&nbsp; Back To Home
+            <a class="btn btn-primary" href="/home" tabindex="1" >
+              <i class="fa fa-home" style="font-size: 20px" ></i >&nbsp;&nbsp;Back To Home
             </a >
           </div >
 
           <div class="col" >
-            <a href="/employee" class="btn btn-info" >View Employees
+            <a href="/employee" class="btn btn-primary" tabindex="1" >
+              <i class="fa fa-list" style="font-size: 20px" ></i >&nbsp;&nbsp;View List
             </a >
           </div >
         </div >
         <div >
           <div class="col" >
-            <h4 class="text-info text-center" >
+            <h4 class="text-danger text-center" >
               <strong >
                 <p data-th-text="${employeeDetail.title.title} +${' '} +${employeeDetail.name}" ></p >
               </strong >

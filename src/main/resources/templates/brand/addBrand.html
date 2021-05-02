@@ -3,6 +3,7 @@
 <head th:replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
   <title >addBrand</title >
+<body background="/img/formbg.jpg"/>
 </head >
 <body >
 <nav th:replace="~{fragments/navBar :: navBarFragment}" ></nav >
@@ -10,6 +11,7 @@
 <div id="add brand" >
   <div class="row" >
     <div class="container-fluid  " >
+      <br>
       <div class="row text-center   " >
         <!--ViewList Button-->
         <div class="col" >
@@ -19,11 +21,11 @@
         </div >
         <!--Form Name-->
         <div class="col" >
-          <h4 class="text text-center text-white" >
-
-            <span data-th-text="${addStatus==true?'New Brand':'Update Brand Details'}" ></span >
-
-          </h4 >
+          <h2 class="text-danger text-center" >
+          <strong>
+            <p data-th-text="${addStatus==true?'New Brand':'Update Brand Details'}" ></p >
+          </strong>
+          </h2 >
         </div >
         <!--Home Button-->
         <div class="col" >
@@ -54,9 +56,9 @@
               </div > <!--Main Category -->
               <div class="form-row text-right" >
                 <div class="col-md-4" >
-                  <label class="control-label" for="mainCategory" ><span class="requiredfield">*</span> Main Category :</label >
+                  <label class="control-label" for="mainCategory" >Main Category :</label >
                 </div >
-                <div class="col-md-8" >
+                <div class="col-md-4" >
                   <select id="mainCategory" data-th-value="${addStatus==false?'brand.category.mainCategory':''}" class="form-control"
                           tabindex="4" style="font-size: large"
                           required >
@@ -66,25 +68,27 @@
                             data-th-value="${mainCategory}"
                     >
                     </option >
+
                   </select >
                 </div >
               </div >
               <!--Sub Category -->
               <div class="form-row text-right" >
-                <div class="col-md-4" ><span class="requiredfield">*</span>
+                <div class="col-md-4" >
                   <label class="control-label" for="subCategory" >Sub Category :</label >
                 </div >
-                <div class="col-md-8" >
+                <div class="col-md-4" >
                   <select id="subCategory" data-th-name="${'category'}" class="form-control" tabindex="4"
                           style="font-size: large" required >
                     <option value="" disabled >Please select</option >
-                    <option data-th-value="${addStatus==false?'brand.category.id':''}" data-th-text="${addStatus==false?'brand.category.name':''}" ></option >
+<!--                    <option data-th-value="${addStatus==false?'brand.category.id':''}" data-th-text="${addStatus==false?'brand.category.name':''}" ></option >-->
+                    <option th:if="${addStatus==false}" data-th-value="${brand.category.id}" data-th-text="${brand.category.name}" ></option >
                   </select >
                 </div >
               </div >
               <!--Name-->
               <div class="form-row text-right" >
-                <div class="col-md-4" ><span class="requiredfield">*</span>
+                <div class="col-md-4" >
                   <label class="control-label" for="name" >Brand Name :</label >
                 </div >
                 <div class="col-md-8" >
@@ -137,7 +141,7 @@
             </button >
             <!--Cancel Button-->
             <button class="btn btn-warning btn-space " type="reset" tabindex="10" >
-              <i class="fa fa-redo" ></i >&nbsp;&nbsp;Clear
+              <i class="fa fa-times-circle" ></i >&nbsp;&nbsp;Cancel
             </button >
           </div >
           <!--Error-->

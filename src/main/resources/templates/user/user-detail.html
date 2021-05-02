@@ -9,6 +9,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
       <!--Page header -->
       <div class="container-fluid" >
+        <br>
         <div class="row text-center formManagement border-info" >
           <div class="col" >
             <a class="btn btn-success" href="/home" >
@@ -16,12 +17,13 @@
             </a >
           </div >
           <div class="col" >
-            <h4 class="text-light text-center" >
+            <br><br>
+            <h2 class="text-danger text-center" >
               <strong >
                     <span id="formHeader"
                           data-th-text="${userDetail.employee.title.title}+${' '}+${userDetail.employee.name}" ></span >
               </strong >
-            </h4 >
+            </h2 >
           </div >
           <div class="col" >
             <a href="/user" class="btn btn-success" >

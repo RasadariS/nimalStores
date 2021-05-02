@@ -95,9 +95,8 @@ public class PaymentController {
       needPayAmount.add(x.getAmount());
     });
     purchaseOrderNeedToPay
-        .setNeedToPaid(operatorService
-                           .subtraction(purchaseOrderNeedToPay.getPrice(), needPayAmount.stream().reduce(BigDecimal.ZERO,BigDecimal::add)));
-
+            .setNeedToPaid(operatorService
+                    .subtraction(purchaseOrderNeedToPay.getPrice(), needPayAmount.stream().reduce(BigDecimal.ZERO,BigDecimal::add)));
 
     //1. still not processed po 2. partially paid po
     List< PurchaseOrder > purchaseOrdersDB =
