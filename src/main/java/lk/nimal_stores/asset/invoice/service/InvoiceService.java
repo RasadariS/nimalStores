@@ -75,7 +75,9 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
     return invoiceDao.findByCreatedAtIsBetweenAndCreatedBy(from, to, userName);
   }
 
+
   public ByteArrayInputStream createPDF(Integer id) throws DocumentException {
+
     Invoice invoice = invoiceDao.getOne(id);
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -88,7 +90,10 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
     Font highLiltedFont = FontFactory.getFont("Arial", 8, BaseColor.BLACK);
 
 
-    Paragraph paragraph = new Paragraph("Samarasingher Super Center \n \t\t Welipillewa\n \t Kadawatha \n", mainFont);
+    Paragraph paragraph = new Paragraph("JN_Super  \n \t\t No:130 B.1, \n" +
+                                            "Negombo Road, \n" +
+                                            "Veyangoda.\n\t" +
+                                            "Wataddara.\n", mainFont);
     paragraph.setAlignment(Element.ALIGN_CENTER);
     paragraph.setIndentationLeft(50);
     paragraph.setIndentationRight(50);
@@ -120,44 +125,51 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
 
     document.add(mainTable);
 
+    Rectangle page = document.getPageSize();
+
     PdfPTable ledgerItemDisplay = new PdfPTable(5);//column amount
     ledgerItemDisplay.setWidthPercentage(100);
     ledgerItemDisplay.setSpacingBefore(10f);
     ledgerItemDisplay.setSpacingAfter(10);
+    ledgerItemDisplay.setTotalWidth(page.getWidth() - document.leftMargin() - document.rightMargin());
 
     Font tableHeader = FontFactory.getFont("Arial", 10, BaseColor.BLACK);
-    ledgerItemDisplay.setWidths(columnWidths);
+    Font tableHeaderOnly = FontFactory.getFont("Arial", 12, BaseColor.BLACK);
 
-    PdfPCell indexHeader = new PdfPCell(new Paragraph("Index", tableHeader));
+
+    PdfPCell indexHeader = new PdfPCell(new Paragraph("Index", tableHeaderOnly));
     pdfCellHeaderCommonStyle(indexHeader);
     ledgerItemDisplay.addCell(indexHeader);
 
-    PdfPCell itemNameHeader = new PdfPCell(new Paragraph("Item Name", tableHeader));
+    PdfPCell itemNameHeader = new PdfPCell(new Paragraph("Item Name", tableHeaderOnly));
     pdfCellHeaderCommonStyle(itemNameHeader);
     ledgerItemDisplay.addCell(itemNameHeader);
 
-    PdfPCell unitPriceHeader = new PdfPCell(new Paragraph("Unit Price", tableHeader));
+    PdfPCell unitPriceHeader = new PdfPCell(new Paragraph("Unit Price", tableHeaderOnly));
     pdfCellHeaderCommonStyle(unitPriceHeader);
     ledgerItemDisplay.addCell(unitPriceHeader);
 
-    PdfPCell quantityHeader = new PdfPCell(new Paragraph("Quantity", tableHeader));
+    PdfPCell quantityHeader = new PdfPCell(new Paragraph("Quantity", tableHeaderOnly));
     pdfCellHeaderCommonStyle(quantityHeader);
     ledgerItemDisplay.addCell(quantityHeader);
 
-    PdfPCell lineTotalHeader = new PdfPCell(new Paragraph("Line Total", tableHeader));
+    PdfPCell lineTotalHeader = new PdfPCell(new Paragraph("Line Total", tableHeaderOnly));
     pdfCellHeaderCommonStyle(lineTotalHeader);
     ledgerItemDisplay.addCell(lineTotalHeader);
 
     for ( int i = 0; i < invoice.getInvoiceLedgers().size(); i++ ) {
-      PdfPCell index = new PdfPCell(new Paragraph(Integer.toString(i), tableHeader));
+      PdfPCell index = new PdfPCell(new Paragraph(Integer.toString(i+1), tableHeader));
       pdfCellBodyCommonStyle(index);
       ledgerItemDisplay.addCell(index);
 
-      PdfPCell itemName = new PdfPCell(new Paragraph(invoice.getInvoiceLedgers().get(i).getLedger().getItem().getName(), tableHeader));
+      PdfPCell itemName =
+          new PdfPCell(new Paragraph(invoice.getInvoiceLedgers().get(i).getLedger().getItem().getName(), tableHeader));
       pdfCellBodyCommonStyle(itemName);
       ledgerItemDisplay.addCell(itemName);
 
-      PdfPCell unitPrice = new PdfPCell(new Paragraph(invoice.getInvoiceLedgers().get(i).getLedger().getSellPrice().toString(), tableHeader));
+      PdfPCell unitPrice =
+          new PdfPCell(new Paragraph(invoice.getInvoiceLedgers().get(i).getLedger().getSellPrice().toString(),
+                                     tableHeader));
       pdfCellBodyCommonStyle(unitPrice);
       ledgerItemDisplay.addCell(unitPrice);
 
@@ -165,7 +177,8 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
       pdfCellBodyCommonStyle(quantity);
       ledgerItemDisplay.addCell(quantity);
 
-      PdfPCell lineTotal = new PdfPCell(new Paragraph(invoice.getInvoiceLedgers().get(i).getLineTotal().toString(), tableHeader));
+      PdfPCell lineTotal = new PdfPCell(new Paragraph(invoice.getInvoiceLedgers().get(i).getLineTotal().toString(),
+                                                      tableHeader));
       pdfCellBodyCommonStyle(lineTotal);
       ledgerItemDisplay.addCell(lineTotal);
     }
@@ -178,7 +191,8 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
     commonStyleForPdfPCellLastOne(totalAmount);
     invoiceTable.addCell(totalAmount);
 
-    PdfPCell totalAmountRs = new PdfPCell(new Phrase("---------------\n" + invoice.getTotalPrice().setScale(2, BigDecimal.ROUND_CEILING).toString(), secondaryFont));
+    PdfPCell totalAmountRs = new PdfPCell(new Phrase("---------------\n" + invoice.getTotalPrice().setScale(2,
+                                                                                                            BigDecimal.ROUND_CEILING).toString(), secondaryFont));
     commonStyleForPdfPCellLastOne(totalAmountRs);
     invoiceTable.addCell(totalAmountRs);
 
@@ -186,11 +200,14 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
     commonStyleForPdfPCellLastOne(paymentMethodOnBill);
     invoiceTable.addCell(paymentMethodOnBill);
 
-    PdfPCell paymentMethodOnBillState = new PdfPCell(new Phrase("========\n" + invoice.getPaymentMethod().getPaymentMethod(), secondaryFont));
+    PdfPCell paymentMethodOnBillState =
+        new PdfPCell(new Phrase("========\n" + invoice.getPaymentMethod().getPaymentMethod(), secondaryFont));
     commonStyleForPdfPCellLastOne(paymentMethodOnBillState);
     invoiceTable.addCell(paymentMethodOnBillState);
 
-    PdfPCell discountRadioAndAmount = new PdfPCell(new Phrase("Discount ( " + invoice.getDiscountRatio().getAmount() + "% ) (Rs.) : ", secondaryFont));
+    PdfPCell discountRadioAndAmount =
+        new PdfPCell(new Phrase("Discount ( " + invoice.getDiscountRatio().getAmount() + "% ) (Rs.) : ",
+                                secondaryFont));
     commonStyleForPdfPCellLastOne(discountRadioAndAmount);
     invoiceTable.addCell(discountRadioAndAmount);
 
@@ -207,7 +224,7 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
     invoiceTable.addCell(amountRs);
 
 
-    if (invoice.getPaymentMethod().equals(PaymentMethod.CASH)) {
+    if ( invoice.getPaymentMethod().equals(PaymentMethod.CASH) ) {
       PdfPCell amountTendered = new PdfPCell(new Phrase("Tender Amount (Rs.) : ", secondaryFont));
       commonStyleForPdfPCellLastOne(amountTendered);
       invoiceTable.addCell(amountTendered);
@@ -240,13 +257,15 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
     commonStyleForParagraphTwo(remarks);
     document.add(remarks);
 
-    Paragraph message = new Paragraph("\nWe will not accept return without invoiced. \n\n ------------------------------------\n            ( " + invoice.getCreatedBy() + " )", secondaryFont);
+    Paragraph message = new Paragraph("\nWe will not accept return without invoiced. \n\n " +
+                                          "------------------------------------\n( " + invoice.getCreatedBy() + " )", secondaryFont);
     commonStyleForParagraphTwo(message);
     document.add(message);
 
     document.close();
     return new ByteArrayInputStream(out.toByteArray());
   }
+
 
   private void pdfCellHeaderCommonStyle(PdfPCell pdfPCell) {
     pdfPCell.setBorderColor(BaseColor.BLACK);
