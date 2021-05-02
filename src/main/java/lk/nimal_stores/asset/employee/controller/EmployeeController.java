@@ -133,9 +133,9 @@ public class EmployeeController {
     if ( employee.getId() == null ) {
       Employee lastEmployee = employeeService.lastEmployee();
       if ( lastEmployee.getCode() == null ) {
-        employee.setCode("SSCE" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
+        employee.setCode("NSSE" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
       } else {
-        employee.setCode("SSCE" + makeAutoGenerateNumberService.numberAutoGen(lastEmployee.getCode().substring(4)).toString());
+        employee.setCode("NSSE" + makeAutoGenerateNumberService.numberAutoGen(lastEmployee.getCode().substring(4)).toString());
       }
 
       Employee employeeNic = null;

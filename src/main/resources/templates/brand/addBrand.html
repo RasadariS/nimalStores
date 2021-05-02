@@ -78,7 +78,8 @@
                   <select id="subCategory" data-th-name="${'category'}" class="form-control" tabindex="4"
                           style="font-size: large" required >
                     <option value="" disabled >Please select</option >
-                    <option data-th-value="${addStatus==false?'brand.category.id':''}" data-th-text="${addStatus==false?'brand.category.name':''}" ></option >
+<!--                    <option data-th-value="${addStatus==false?'brand.category.id':''}" data-th-text="${addStatus==false?'brand.category.name':''}" ></option >-->
+                    <option th:if="${addStatus==false}" data-th-value="${brand.category.id}" data-th-text="${brand.category.name}" ></option >
                   </select >
                 </div >
               </div >
