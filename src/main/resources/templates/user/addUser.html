@@ -14,6 +14,7 @@
           enctype="multipart/form-data" >
       <div class="form-row" >
         <div class="container-fluid " >
+            <br>
           <div class="row text-center formManagement border-info" >
             <div class="col" >
               <a class="btn btn-success" href="/home" >
@@ -21,11 +22,12 @@
               </a >
             </div >
             <div class="col" >
-              <h4 class="text-light text-center" >
+                <br><br>
+              <h2 class="text-danger text-center" >
                 <strong >
                     <span id="formHeader" data-th-text="${addStatus==true?'New User':'Update User'}" ></span >
                 </strong >
-              </h4 >
+              </h2 >
             </div >
             <div class="col" >
               <a href="/user" class="btn btn-success" >
@@ -68,7 +70,7 @@
               <div class="col-2" >
                 <label class="control-label" ></label >
               </div >
-              <div class="col-10 text-left" id="btnSearchEmployee" >
+              <div class="col-7 text-left" id="btnSearchEmployee" >
                 <button class="btn btn-success" tabindex="3" type="submit" >
                   <i class="fa fa-search " style="font-size: 20px" ></i >&nbsp; &nbsp;Search
                 </button >
