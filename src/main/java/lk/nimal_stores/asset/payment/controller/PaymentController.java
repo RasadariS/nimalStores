@@ -100,8 +100,10 @@ public class PaymentController {
 
     //1. still not processed po 2. partially paid po
     List< PurchaseOrder > purchaseOrdersDB =
-            purchaseOrderService.findByPurchaseOrderStatusAndSupplier(PurchaseOrderStatus.NOT_PROCEED,
-                    purchaseOrderNeedToPay.getSupplier());
+        purchaseOrderService.findByPurchaseOrderStatusAndSupplier(PurchaseOrderStatus.NOT_PROCEED,
+                                                                  purchaseOrderNeedToPay.getSupplier());
+
+
     List< PurchaseOrder > purchaseOrderNotPaid = new ArrayList<>();
 
     if ( purchaseOrdersDB != null ) {
@@ -118,11 +120,11 @@ public class PaymentController {
           } else {
             purchaseOrder.setGrnAt(LocalDateTime.now());
           }
+
           purchaseOrder.setPaidAmount(paidAmount);
           purchaseOrder.setNeedToPaid(operatorService.subtraction(purchaseOrder.getPrice(), paidAmount));
           purchaseOrderNotPaid.add(purchaseOrder);
         }
-        purchaseOrderNotPaid.add(purchaseOrder);
       }
     }
     System.out.println(purchaseOrderNotPaid.size() +"  not paid size");
@@ -132,6 +134,7 @@ public class PaymentController {
     model.addAttribute("paymentMethods", PaymentMethod.values());
     return "payment/addPayment";
   }
+
 
   @PostMapping
   public String savePayment(@Valid @ModelAttribute Payment payment, BindingResult bindingResult) {
